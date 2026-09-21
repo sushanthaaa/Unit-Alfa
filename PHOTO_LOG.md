@@ -2,6 +2,8 @@
 
 Updated 21 September 2026. Real company assets are reused from the existing website at the user’s instruction. All generated images are generic illustrations, visibly labelled, and never presented as company production samples. No competitor photos or unverified OEM logos are used.
 
+The deployed images are all included under `public/images/`. References below to `../photos/` identify the separate research archive, which is not part of this Git repository or required for installation. Public source URLs are retained for provenance.
+
 ## Real photographs
 
 ### UA-11 — battery-box.webp

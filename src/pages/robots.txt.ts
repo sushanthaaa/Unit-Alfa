@@ -1,8 +1,9 @@
 import type { APIRoute } from 'astro';
+import { resolveSiteConfig } from '../lib/site-config';
 export const GET: APIRoute = ({ site }) => {
-  const production = site?.hostname === 'www.unitalfa.in' || site?.hostname === 'unitalfa.in';
+  const { indexable } = resolveSiteConfig(process.env);
   return new Response(
-    `User-agent: *\n${production ? 'Allow: /' : 'Disallow: /'}\nSitemap: ${new URL('/sitemap-index.xml', site).href}\n`,
+    `User-agent: *\n${indexable ? 'Allow: /' : 'Disallow: /'}\nSitemap: ${new URL('/sitemap-index.xml', site).href}\n`,
     { headers: { 'Content-Type': 'text/plain; charset=utf-8' } },
   );
 };

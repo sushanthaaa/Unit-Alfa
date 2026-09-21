@@ -1,0 +1,23 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "astro",
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/about-unit-alfa/", "destination": "/about/", "permanent": true },
+    { "source": "/unit-alfa-company-profile/", "destination": "/about/", "permanent": true },
+    { "source": "/unit-alfa-services/", "destination": "/capabilities/", "permanent": true },
+    { "source": "/contact-unit-alfa/", "destination": "/contact/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}

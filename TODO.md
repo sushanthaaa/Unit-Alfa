@@ -78,8 +78,8 @@ Updated 21 September 2026. Research, photography selection and the complete repl
 ## Publication and handover
 
 - [x] Register one private replacement Site and preserve its project identity.
-- [x] Prepare the exact validated replacement for private publication; final deployment status is tracked in the parent deliverables’ TODO.md.
-- [x] Prepare source, README, photo log and remaining checks for handover; final URL is recorded with the deployment.
+- [x] Publish the first replacement and original-logo/motion revision to the private Sites review environment.
+- [x] Prepare source, README, photo log and remaining checks for handover.
 
 ## Remaining operational or browser checks
 
@@ -103,4 +103,20 @@ These do not conceal placeholders or simulated submission in the delivered site.
 - [x] Add headline sequencing, staggered section/photo reveals, process-line motion and actual reading progress.
 - [x] Respect reduced motion and unavailable session storage; keep native scrolling and content fallbacks.
 - [x] Update logo provenance, README and the privacy description of the tab-session flag.
-- [x] Rebuild and audit changed output; prepare the validated source for private publication. Final publication is recorded in the parent deliverables’ TODO/DEPLOYMENT files.
+- [x] Rebuild and audit changed output; prepare the validated source for private publication. That revision was published to the private Sites preview before the GitHub/Vercel handoff.
+
+## GitHub and Vercel handoff
+
+- [x] Pin Node 24.x and document reproducible npm installation.
+- [x] Add native Vercel build settings, permanent legacy redirects and response headers.
+- [x] Centralize canonical URLs and opt-in production indexing; never index Vercel previews.
+- [x] Replace the Python output audit with a maintainable Node/HTML-parser audit included in every build.
+- [x] Add focused deployment-policy tests alongside the RFQ tests.
+- [x] Add GitHub Actions for formatting, tests and a review-environment build.
+- [x] Add contribution conventions, editor settings and Vercel import/launch documentation.
+- [x] Include archived research, asset provenance and third-party license notices in the repository.
+- [x] Complete clean-install, formatting, test, build, dependency and repository-hygiene checks.
+- [ ] Push the validated source to `sushanthaaa/Unit-Alfa` on `main` and verify the remote revision.
+- [ ] Confirm the first GitHub Actions run passes.
+- [ ] Import the repository into Vercel and verify the generated review deployment.
+- [ ] Share a client-accessible Vercel review link and obtain approval before company-domain cutover.

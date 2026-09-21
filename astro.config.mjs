@@ -1,8 +1,15 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { existsSync } from 'node:fs';
+import { loadEnvFile } from 'node:process';
+import { resolveSiteConfig } from './src/lib/site-config.ts';
+
+// Astro's config runs before its .env loading. Existing platform variables win.
+if (existsSync('.env')) loadEnvFile('.env');
+const { siteUrl } = resolveSiteConfig(process.env);
 
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://unit-alfa-manufacturing.sushanthp48.chatgpt.site',
+  site: siteUrl,
   output: 'static',
   trailingSlash: 'always',
   integrations: [sitemap({ filter: (page) => !page.includes('/404') })],

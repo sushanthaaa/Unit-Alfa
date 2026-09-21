@@ -1,21 +1,23 @@
 # UNIT ALFA — replacement website
 
-A complete multi-page Astro website for the sheet-metal and excavator-component manufacturer in Bommasandra, Bengaluru. The existing [Unit Alfa website](https://www.unitalfa.in/) is the approved factual baseline. This replacement does not change the existing domain or its hosting.
+A complete multi-page Astro website for the sheet-metal and excavator-component manufacturer in Bommasandra, Bengaluru. The existing [Unit Alfa website](https://www.unitalfa.in/) is the approved factual baseline. This repository contains the replacement prepared for Vercel and client review. The existing company domain and DNS have not been changed.
 
 ## Run and build
 
-Use Node.js 22.18+ (Node 24 recommended) and npm 9.6.5+.
+Use **Node.js 24.x** and **npm 11+**. With nvm installed, run `nvm use` in this repository. The committed lockfile is the dependency baseline.
 
 ```sh
+git clone https://github.com/sushanthaaa/Unit-Alfa.git
+cd Unit-Alfa
 npm ci
 npm run dev
 npm run build
 npm run preview
 npm test
-npm run audit:static
+npm run format:check
 ```
 
-Development and preview use http://127.0.0.1:4321. Astro 7 may retain its development server as a background process; use `npx astro dev stop` to stop it. The build runs Astro/TypeScript diagnostics before generating static HTML in `dist/`. No application server, database, paid font service or API key is required. `npm run format` formats the owned source.
+Development and preview use http://127.0.0.1:4321. Astro 7 may retain its development server as a background process; use `npx astro dev stop` to stop it. The build runs Astro/TypeScript diagnostics, generates static HTML in `dist/`, and audits the generated pages. No Python installation is needed. No application server, database, paid font service or API key is required. `npm run format` formats source and documentation. `npm run audit:static` reruns the output audit; its environment must match the build. GitHub Actions runs installation, formatting, tests and a Vercel-preview build for pushes to `main` and pull requests.
 
 ## Pages and interactions
 
@@ -23,16 +25,16 @@ Home, About, Capabilities / Plant, Products, Quality, Enquiry / RFQ, Contact, Pr
 
 ## Content locations
 
-| Change | File |
-|---|---|
-| Phone, email, address, proprietor, GSTIN and map | `src/data/company.ts` |
-| Product copy, photos, generation labels and quote names | `src/data/products.ts` |
-| Published machinery and process text | `src/data/machines.ts` |
-| Colours, type, layouts, breakpoints and motion | `src/styles/global.css` |
-| Shared navigation, footer and metadata | `src/layouts/Layout.astro` |
-| Individual page text | `src/pages/` |
-| Enquiry validation / email draft | `src/lib/rfq.ts`, `src/scripts/enquiry.ts` |
-| Photo sources, prompts and usage | `PHOTO_LOG.md`, `generated-image-prompts.json` |
+| Change                                                  | File                                           |
+| ------------------------------------------------------- | ---------------------------------------------- |
+| Phone, email, address, proprietor, GSTIN and map        | `src/data/company.ts`                          |
+| Product copy, photos, generation labels and quote names | `src/data/products.ts`                         |
+| Published machinery and process text                    | `src/data/machines.ts`                         |
+| Colours, type, layouts, breakpoints and motion          | `src/styles/global.css`                        |
+| Shared navigation, footer and metadata                  | `src/layouts/Layout.astro`                     |
+| Individual page text                                    | `src/pages/`                                   |
+| Enquiry validation / email draft                        | `src/lib/rfq.ts`, `src/scripts/enquiry.ts`     |
+| Photo sources, prompts and usage                        | `PHOTO_LOG.md`, `generated-image-prompts.json` |
 
 ## Original logo and motion
 
@@ -60,28 +62,59 @@ If mailto links are unsupported or a draft is too long for the email client, cop
 
 An optional, feature-detected imperative WebMCP tool, `prepare_rfq_draft`, uses the same visible form state and validator. It stages an unsent draft only. Unsupported browsers keep the normal form. A supported live WebMCP validation context was unavailable, so registration and live tool execution are not claimed as verified.
 
-## SEO and domain migration
+## Vercel deployment and SEO
 
-`SITE_URL` controls canonical links, Open Graph URLs, sitemap and structured-data IDs. The default is the private Sites preview. Preview builds use `noindex,follow` and a disallowing robots file. For the existing production domain:
+See [VERCEL.md](VERCEL.md) for import, review sharing and domain cutover instructions.
 
-```sh
-SITE_URL=https://www.unitalfa.in npm run build
-```
+| Vercel setting    | Value                   |
+| ----------------- | ----------------------- |
+| Repository        | `sushanthaaa/Unit-Alfa` |
+| Production branch | `main`                  |
+| Root directory    | `./` (repository root)  |
+| Framework preset  | Astro                   |
+| Node.js           | 24.x                    |
+| Install command   | `npm ci`                |
+| Build command     | `npm run build`         |
+| Output directory  | `dist`                  |
 
-Deploy the resulting `dist/` to the chosen host with HTTPS and route fallback to `404.html`. Production-domain builds enable crawling. Keep one consistent www/non-www origin, and configure the other to redirect. Sitemap: `/sitemap-index.xml`.
+This is a static Astro build. It requires no Vercel adapter, server functions, database or API keys. `vercel.json` supplies permanent legacy redirects, consistent trailing slashes and basic response headers. Astro supplies the `404.html` page. There is no SPA catch-all rewrite.
 
-The old `/about-unit-alfa/`, `/unit-alfa-company-profile/`, `/unit-alfa-services/` and `/contact-unit-alfa/` paths have static redirect pages. `public/_redirects` also supplies 301 mappings for hosts that support that format; configure equivalent HTTP 301 rules on other hosts. Confirm remaining legacy URL paths from a production crawl before cutover. Do not overwrite the current site without its hosting access and a rollback backup.
+`src/lib/site-config.ts` is the shared source of truth for canonical URLs and indexing. Vercel review builds use their deployment URL; production uses `SITE_URL` when supplied, otherwise Vercel's project production URL. Local development defaults to `http://localhost:4321`. Both HTML and robots stay non-indexable by default, including the initial main-branch `vercel.app` deployment.
+
+After client approval and company-domain setup, set `SITE_URL=https://www.unitalfa.in` and `SITE_INDEXABLE=true` in Vercel's **Production** environment and redeploy. Preview deployments remain non-indexable even if they inherit production settings. Local overrides can be placed in `.env` copied from `.env.example`; platform/shell values take precedence. Environment values are applied at build time, so any change requires a rebuild.
+
+The four known legacy paths have permanent Vercel redirects and static redirect fallbacks. `public/_redirects` is retained for hosts supporting that format. Confirm remaining legacy paths before domain cutover. Keep one www/non-www origin and redirect the other in Vercel's domain settings. Sitemap: `/sitemap-index.xml`.
 
 Organization and LocalBusiness JSON-LD share one identity. Product records reference that identity through `manufacturer`; `Manufacturer` is not a schema.org type. No fake offers, ratings, unknown coordinates/hours or illustrative images masquerading as product evidence are added. Open Graph text/URL metadata is unique per page; no unrequested generated social card is used.
 
 ## Photography, fonts and licenses
 
-Ten real company/Weldtables photographs and three clearly labelled generated component illustrations are used. Real originals remain in the sibling research `photos/` folder. Site WebP derivatives preserve small catalogue images at 345 × 260; factory images are not enlarged into fictitious high-resolution photographs. Every asset is recorded in PHOTO_LOG.md. No generative retouching was applied to real photographs. All body/display fonts are self-hosted with OFL notices in `licenses/`.
+Ten real company/Weldtables photographs and three clearly labelled generated component illustrations are used. The repository includes all deployed derivatives and the original logo. Larger source photographs remain in the separate research archive; they are not required to build. PHOTO_LOG.md retains their public source URLs and archive identifiers. Site WebP derivatives preserve small catalogue images at 345 × 260; factory images are not enlarged into fictitious high-resolution photographs. Every asset is recorded in PHOTO_LOG.md. No generative retouching was applied to real photographs. All body/display fonts are self-hosted with OFL notices in `licenses/`.
 
 The source-code license is MIT. Company assets and third-party images/fonts retain their own rights. See THIRD_PARTY_NOTICES.md.
 
 ## Validation and remaining launch checks
 
-`npm run build` covers Astro and TypeScript. `npm test` exercises required RFQ validation, manufacturing detail retention and mailto header safety. `npm run audit:static` checks generated routes, titles/descriptions, headings, internal links, image references/dimensions, form labels and JSON-LD parsing.
+`npm run build` covers Astro and TypeScript. `npm test` exercises required RFQ validation, manufacturing detail retention, mailto header safety, URL validation and the preview/production indexing boundary. `npm run audit:static` checks generated routes, unique metadata, canonical/OG origins, indexing policy, headings, internal links and anchors, image references/dimensions, form labels, JSON-LD parsing, sitemap, robots and redirect fallbacks.
 
 Responsive breakpoints, visible focus, menu Escape behaviour, native dialog focus return, field labels and reduced-motion CSS are implemented. Browser screenshots, viewport interaction tests, screen-reader checks and field performance measurements were not performed. Do not describe these as tested. See TODO.md for the remaining verification and domain-cutover work.
+
+## Repository structure and contribution
+
+```text
+src/
+  components/  Reusable Astro components
+  data/        Company facts, products and machine specifications
+  layouts/     Shared document shell, navigation, footer and metadata
+  lib/         RFQ validation and build-time deployment policy
+  pages/       One static route per page, plus robots.txt
+  scripts/     Browser interactions and motion
+  styles/      Owned responsive styles and motion
+public/        Deployed images, favicon and host-neutral redirects
+scripts/       Node tests and generated-HTML audit
+licenses/      Font license notices
+docs/research/ Original research, competitor review and design specification
+.github/       Automated checks
+```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the change workflow, [PHOTO_LOG.md](PHOTO_LOG.md) for asset sources, [VALIDATION.md](VALIDATION.md) for check results and limits, and [TODO.md](TODO.md) for client/launch follow-ups. The `.openai/hosting.json` file identifies the earlier Sites preview; Vercel does not use it and it contains no credentials.

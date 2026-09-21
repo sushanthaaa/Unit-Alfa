@@ -4,17 +4,18 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=22.18.0",
-    "npm": ">=9.6.5"
+    "node": "24.x",
+    "npm": ">=11"
   },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1 --port 4321",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && npm run audit:static",
     "preview": "astro preview --host 127.0.0.1 --port 4321",
     "check": "astro check",
-    "test": "node --test scripts/test-rfq.mjs",
-    "audit:static": "python3 scripts/audit-static.py",
-    "format": "prettier --write src scripts/*.mjs astro.config.mjs package.json"
+    "test": "node --test scripts/test-*.mjs",
+    "audit:static": "node scripts/audit-static.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
@@ -26,6 +27,7 @@
     "typescript": "^6.0.3"
   },
   "devDependencies": {
+    "parse5": "^8.0.1",
     "prettier": "^3.9.8",
     "prettier-plugin-astro": "^1.0.1"
   }

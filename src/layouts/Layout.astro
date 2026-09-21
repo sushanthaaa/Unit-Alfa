@@ -9,6 +9,7 @@ import { company, navigation } from '../data/company';
 import Arrow from '../components/Arrow.astro';
 import BrandLogo from '../components/BrandLogo.astro';
 import WelcomeLoader from '../components/WelcomeLoader.astro';
+import { resolveSiteConfig } from '../lib/site-config';
 interface Props {
   title: string;
   description: string;
@@ -16,9 +17,9 @@ interface Props {
 }
 const { title, description, noindex = false } = Astro.props;
 const path = Astro.url.pathname;
-const origin = Astro.site || new URL('https://www.unitalfa.in');
+const { indexable } = resolveSiteConfig(process.env);
+const origin = Astro.site!;
 const canonical = new URL(path, origin);
-const preview = !['www.unitalfa.in', 'unitalfa.in'].includes(origin.hostname);
 const business = {
   '@context': 'https://schema.org',
   '@type': ['Organization', 'LocalBusiness'],
@@ -111,7 +112,7 @@ const business = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    {(noindex || preview) && <meta name="robots" content="noindex,follow" />}
+    {(noindex || !indexable) && <meta name="robots" content="noindex,follow" />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
