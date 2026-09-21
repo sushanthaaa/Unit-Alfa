@@ -19,7 +19,7 @@ Development and preview use http://127.0.0.1:4321. Astro 7 may retain its develo
 
 ## Pages and interactions
 
-Home, About, Capabilities / Plant, Products, Quality, Enquiry / RFQ, Contact, Privacy and Website Terms, plus a 404 page. Every page has a clean URL and usable static HTML. The catalogue contains ten component families, category filtering, image enlargement and product-prefilled quote links. The plant page has an accessible native process disclosure sequence and click-to-load company video. Contact has a click-to-load map. Shared CSS supplies restrained page arrival, scroll reveals, hover states, a mobile navigation menu and sticky enquiry access. Reduced-motion preferences disable motion.
+Home, About, Capabilities / Plant, Products, Quality, Enquiry / RFQ, Contact, Privacy and Website Terms, plus a 404 page. Every page has a clean URL and usable static HTML. The catalogue contains ten component families, category filtering, image enlargement and product-prefilled quote links. The plant page has an accessible native process disclosure sequence and click-to-load company video. Contact has a click-to-load map. Shared CSS supplies sequenced headline arrival, staggered scroll reveals, photographic reveals, manufacturing-process line motion, hover states, a mobile navigation menu and sticky enquiry access. A slim header line follows actual reading progress. Reduced-motion preferences disable motion.
 
 ## Content locations
 
@@ -33,6 +33,14 @@ Home, About, Capabilities / Plant, Products, Quality, Enquiry / RFQ, Contact, Pr
 | Individual page text | `src/pages/` |
 | Enquiry validation / email draft | `src/lib/rfq.ts`, `src/scripts/enquiry.ts` |
 | Photo sources, prompts and usage | `PHOTO_LOG.md`, `generated-image-prompts.json` |
+
+## Original logo and motion
+
+The original script logo from the existing website is used unchanged in the header, footer and opening loader. Its PNG is also the Organization JSON-LD logo. Change it in `src/components/BrandLogo.astro` and `src/components/WelcomeLoader.astro` only if approved replacement artwork is supplied; do not retype or redraw it.
+
+The first homepage visit per tab gets a brief introduction: the original logo and a moving industrial rule. It starts dismissing after the logo decodes and at least 580 ms have elapsed; an independent inline 1,400 ms deadline closes it even if assets or page modules fail. Any keyboard, pointer, wheel or touch interaction dismisses it. It never locks scrolling or takes focus. It is skipped on other routes, hash deep links, back/forward visits, reduced-motion preference and unavailable session storage. `unit-alfa-intro-seen` stores only a tab-session boolean; enquiry data is not persisted. Privacy text describes this flag.
+
+Intro logic lives in `Layout.astro`; page motion is in `src/scripts/motion.ts` and `src/styles/motion.css`. Native scroll remains in control. Below-fold reveals use IntersectionObserver and bounded stagger; keyboard focus reveals content immediately. Live reduced-motion changes reveal all content. The reading line uses a passive scroll listener with requestAnimationFrame and responds to changed document height.
 
 ## Contact values and missing information
 

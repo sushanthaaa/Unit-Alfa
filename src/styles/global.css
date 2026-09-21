@@ -210,32 +210,6 @@ ul {
   align-items: center;
   gap: 30px;
 }
-.wordmark {
-  display: inline-flex;
-  flex-direction: column;
-  flex-shrink: 0;
-}
-.wordmark > span {
-  font-family: var(--display);
-  font-size: 2.65rem;
-  line-height: 0.95;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-.brand-square {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: var(--orange);
-  margin-left: 5px;
-  vertical-align: baseline;
-}
-.wordmark small {
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
-  line-height: 1.7;
-  margin-top: 5px;
-}
 .site-header nav {
   display: flex;
   align-items: center;
@@ -484,22 +458,14 @@ ul {
 }
 .reveal-ready {
   opacity: 0;
-  transform: translateY(12px);
+  transform: translate3d(0, 26px, 0);
   transition:
-    opacity 0.4s ease,
-    transform 0.4s ease;
+    opacity 550ms ease var(--reveal-delay, 0ms),
+    transform 700ms cubic-bezier(0.2, 0.65, 0.3, 1) var(--reveal-delay, 0ms);
 }
 .is-revealed {
   opacity: 1;
   transform: none;
-}
-@media (min-width: 1100px) {
-  .hero-copy {
-    animation: enter 0.5s both;
-  }
-  .hero-visual {
-    animation: enter 0.6s 0.08s both;
-  }
 }
 @keyframes enter {
   from {
@@ -520,9 +486,6 @@ ul {
   }
   .header-inner {
     gap: 20px;
-  }
-  .wordmark > span {
-    font-size: 2.3rem;
   }
   .header-quote {
     padding: 12px 14px;
@@ -721,9 +684,6 @@ ul {
     border-top: 1px solid var(--ink);
     padding-bottom: calc(14px + env(safe-area-inset-bottom));
     min-height: 55px;
-  }
-  .wordmark > span {
-    font-size: 2.25rem;
   }
   .hero .button-row {
     gap: 21px;
@@ -1903,10 +1863,6 @@ textarea:focus {
 /* Fluid layouts and sufficiently large targets at every breakpoint. */
 .utility {
   font-size: 0.75rem;
-}
-.wordmark small {
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
 }
 .hero-origin span {
   font-size: 0.75rem;

@@ -95,3 +95,12 @@ These do not conceal placeholders or simulated submission in the delivered site.
 - [ ] Perform an authorised human email/drawing receipt test; no email has been sent by this task.
 - [ ] If direct server submission is later wanted, add mail delivery, private attachment storage, validation/rate limits and matching privacy handling. Current email-draft delivery works without that endpoint.
 - [ ] For live replacement: obtain existing host/DNS access, back up current website, build for https://www.unitalfa.in, configure HTTPS/301 redirects and verify production indexing. The existing public website is not changed by private Sites publication.
+
+## Revision — original logo and livelier motion
+
+- [x] Use the exact existing-site script logo in header, footer and opening loader; add the actual logo to structured data.
+- [x] Add a brief first-homepage-visit introduction with keyboard/pointer dismissal, timeout and no scroll/focus lock.
+- [x] Add headline sequencing, staggered section/photo reveals, process-line motion and actual reading progress.
+- [x] Respect reduced motion and unavailable session storage; keep native scrolling and content fallbacks.
+- [x] Update logo provenance, README and the privacy description of the tab-session flag.
+- [x] Rebuild and audit changed output; prepare the validated source for private publication. Final publication is recorded in the parent deliverables’ TODO/DEPLOYMENT files.

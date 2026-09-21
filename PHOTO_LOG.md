@@ -146,7 +146,7 @@ These fill the three catalogue gaps where usable company photographs were not fo
 ## Non-photographic assets and exclusions
 
 - `public/favicon.svg`: simple code-authored UA initial mark; functional site identity, not a certificate or affiliation.
-- The wordmark is typeset text. The original company PNG is retained in research only.
+- `public/images/unit-alfa-logo.png`: original Unit Alfa script logo, byte-for-byte copy of [the existing-site PNG](https://www.unitalfa.in/wp-content/uploads/2024/05/Unit-Alfa-1.png). 944 × 382, 224,860 bytes. Used in every page’s header and footer, the first-homepage-visit loader, and Organization JSON-LD. Header/footer alt: “Unit Alfa”; the duplicate decorative loader image has empty alt inside an aria-hidden container. No recolouring, tracing, generative editing, cropping or resampling; a CSS paper-colour ground keeps the original black artwork readable. Original research ID: UA-00.
 - `Arrow.astro` is a functional SVG navigation icon. No decorative industrial imagery was constructed from CSS or SVG.
 - The three unselected Weldtables photos, other corporate stock-like images and six video title thumbnails remain in the research inventory; they are not shipped in the site.
 

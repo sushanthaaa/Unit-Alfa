@@ -4,8 +4,11 @@ import '@fontsource/barlow-condensed/latin-700.css';
 import '@fontsource/source-sans-3/latin-400.css';
 import '@fontsource/source-sans-3/latin-600.css';
 import '../styles/global.css';
+import '../styles/motion.css';
 import { company, navigation } from '../data/company';
 import Arrow from '../components/Arrow.astro';
+import BrandLogo from '../components/BrandLogo.astro';
+import WelcomeLoader from '../components/WelcomeLoader.astro';
 interface Props {
   title: string;
   description: string;
@@ -21,6 +24,7 @@ const business = {
   '@type': ['Organization', 'LocalBusiness'],
   '@id': new URL('/#organization', origin).href,
   name: company.name,
+  logo: new URL('/images/unit-alfa-logo.png', origin).href,
   url: origin.href,
   foundingDate: company.founded,
   description:
@@ -45,7 +49,62 @@ const business = {
   <head>
     <meta charset="UTF-8" />
     <script is:inline>
-      document.documentElement.classList.remove('no-js');
+      (() => {
+        const root = document.documentElement;
+        root.classList.remove('no-js');
+        const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+        root.classList.toggle('motion-enabled', !preference.matches);
+        const navigation = performance.getEntriesByType('navigation')[0];
+        if (
+          preference.matches ||
+          location.pathname !== '/' ||
+          location.hash ||
+          navigation?.type === 'back_forward'
+        )
+          return;
+        try {
+          if (sessionStorage.getItem('unit-alfa-intro-seen')) return;
+          sessionStorage.setItem('unit-alfa-intro-seen', '1');
+        } catch {
+          return;
+        }
+
+        root.classList.add('intro-pending');
+        const start = performance.now();
+        let finished = false;
+        let timer;
+        const dismiss = () => {
+          if (finished) return;
+          finished = true;
+          clearTimeout(timer);
+          root.classList.remove('intro-pending');
+          document.removeEventListener('keydown', dismiss, true);
+          document.removeEventListener('pointerdown', dismiss, true);
+          document.removeEventListener('wheel', dismiss);
+          document.removeEventListener('touchstart', dismiss);
+        };
+        // The inline failsafe works even if the page's module fails to load.
+        timer = setTimeout(dismiss, 1400);
+        document.addEventListener(
+          'DOMContentLoaded',
+          () => {
+            const logo = document.querySelector('[data-intro-logo]');
+            const ready = logo?.decode ? logo.decode().catch(() => {}) : Promise.resolve();
+            ready.then(() => setTimeout(dismiss, Math.max(0, 580 - (performance.now() - start))));
+          },
+          { once: true },
+        );
+        document.addEventListener('keydown', dismiss, { once: true, capture: true });
+        document.addEventListener('pointerdown', dismiss, { once: true, capture: true });
+        document.addEventListener('wheel', dismiss, { once: true, passive: true });
+        document.addEventListener('touchstart', dismiss, { once: true, passive: true });
+        window.addEventListener('pageshow', (event) => {
+          if (event.persisted) dismiss();
+        });
+        preference.addEventListener('change', (event) => {
+          if (event.matches) dismiss();
+        });
+      })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#1c2225" />
@@ -64,6 +123,7 @@ const business = {
     <slot name="head" />
   </head>
   <body>
+    <WelcomeLoader />
     <a class="skip-link" href="#main">
       Skip to content
     </a>
@@ -75,12 +135,7 @@ const business = {
     </div>
     <header class="site-header">
       <div class="container header-inner">
-        <a class="wordmark" href="/" aria-label="Unit Alfa home">
-          <span>
-            UNIT ALFA<span class="brand-square"></span>
-          </span>
-          <small>METAL. FORM. FUNCTION.</small>
-        </a>
+        <BrandLogo priority />
         <button
           class="menu-toggle"
           aria-label="Open navigation"
@@ -105,6 +160,7 @@ const business = {
           </a>
         </nav>
       </div>
+      <div class="reading-progress" aria-hidden="true"></div>
     </header>
     <main id="main">
       <slot />
@@ -112,11 +168,7 @@ const business = {
     <footer class="site-footer">
       <div class="container footer-main">
         <div class="footer-about">
-          <a class="wordmark" href="/">
-            <span>
-              UNIT ALFA<span class="brand-square"></span>
-            </span>
-          </a>
+          <BrandLogo plate />
           <p>
             Pressed components. Fabricated assemblies.
             <br />
@@ -179,25 +231,7 @@ const business = {
           toggle.focus();
         }
       });
-      if (
-        !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
-        'IntersectionObserver' in window
-      ) {
-        const observer = new IntersectionObserver(
-          (entries) =>
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-revealed');
-                observer.unobserve(entry.target);
-              }
-            }),
-          { threshold: 0.08 },
-        );
-        document.querySelectorAll('[data-reveal]').forEach((el) => {
-          el.classList.add('reveal-ready');
-          observer.observe(el);
-        });
-      }
     </script>
+    <script src="../scripts/motion.ts"></script>
   </body>
 </html>

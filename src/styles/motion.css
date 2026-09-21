@@ -1,0 +1,289 @@
+/* Original company artwork is kept intact on a light ground. */
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 176px;
+  line-height: 0;
+}
+.brand-logo img {
+  width: 100%;
+  height: auto;
+}
+.brand-logo--plate {
+  width: 210px;
+  padding: 12px 16px;
+  background: var(--paper);
+}
+.site-header {
+  transition: box-shadow 250ms ease;
+}
+.site-header.is-scrolled {
+  box-shadow: 0 4px 14px rgb(28 34 37 / 7%);
+}
+.reading-progress {
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 2px;
+  background: var(--orange);
+  transform: scaleX(var(--reading-progress, 0));
+  transform-origin: left;
+  pointer-events: none;
+}
+
+/* First-homepage-visit introduction; no scroll lock, focus trap or artificial percentage. */
+.welcome-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: 30px;
+  background: var(--paper);
+  border-bottom: 3px solid var(--orange);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-5%);
+  pointer-events: none;
+  transition:
+    opacity 360ms ease,
+    transform 500ms cubic-bezier(0.65, 0, 0.35, 1),
+    visibility 0s linear 500ms;
+}
+.intro-pending .welcome-loader {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: none;
+}
+.welcome-loader-inner {
+  width: min(360px, 100%);
+}
+.welcome-loader img {
+  width: 290px;
+  margin: 29px auto 33px;
+}
+.loader-location,
+.loader-caption {
+  font-size: 0.75rem;
+  letter-spacing: 0.09em;
+  font-weight: 600;
+  color: var(--muted);
+}
+.loader-location {
+  display: block;
+  text-align: center;
+}
+.loader-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 13px;
+  letter-spacing: 0.02em;
+}
+.loader-caption > span {
+  white-space: nowrap;
+}
+.loader-rule {
+  display: block;
+  height: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+.loader-rule > span {
+  display: block;
+  height: 100%;
+  width: 45%;
+  background: var(--orange);
+}
+.intro-pending .loader-rule > span {
+  animation: loader-pass 950ms cubic-bezier(0.45, 0, 0.25, 1) infinite;
+}
+@keyframes loader-pass {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(330%);
+  }
+}
+
+/* Type arrives in successive passes, followed by the shop-floor photograph. */
+.hero h1 > .hero-line {
+  display: block;
+  overflow: clip;
+  color: var(--ink);
+  padding-block: 0.055em;
+  margin-block: -0.055em;
+}
+.hero h1 > .hero-line-accent {
+  color: var(--rust);
+}
+.hero-line > span {
+  display: block;
+}
+.motion-enabled .hero-line > span {
+  animation: type-arrival 780ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
+}
+.motion-enabled .hero-line:nth-child(2) > span {
+  animation-delay: 90ms;
+}
+.motion-enabled .hero-line:nth-child(3) > span {
+  animation-delay: 180ms;
+}
+.motion-enabled .hero-copy > .eyebrow {
+  animation: enter 550ms 80ms both;
+}
+.motion-enabled .hero-intro,
+.motion-enabled .hero-copy > .button-row,
+.motion-enabled .hero-origin {
+  animation: enter 650ms 260ms both;
+}
+.motion-enabled .hero-visual {
+  animation: photo-arrival 850ms 140ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
+}
+.motion-enabled .page-intro .eyebrow {
+  animation: enter 500ms both;
+}
+.motion-enabled .page-intro h1 {
+  animation: enter 650ms 80ms both;
+}
+.motion-enabled .page-intro-grid > p {
+  animation: enter 650ms 160ms both;
+}
+.intro-pending .hero-line > span,
+.intro-pending .hero-copy > .eyebrow,
+.intro-pending .hero-intro,
+.intro-pending .hero-copy > .button-row,
+.intro-pending .hero-origin,
+.intro-pending .hero-visual {
+  animation-play-state: paused;
+}
+@keyframes type-arrival {
+  from {
+    opacity: 0;
+    transform: translateY(105%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes photo-arrival {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section motion follows the catalogue and manufacturing sequence. */
+figure.reveal-ready img {
+  clip-path: inset(0 0 12% 0);
+  transition: clip-path 850ms cubic-bezier(0.2, 0.65, 0.3, 1) var(--reveal-delay, 0ms);
+}
+figure.is-revealed img {
+  clip-path: inset(0);
+}
+.reveal-ready:focus-within,
+.reveal-ready:target {
+  opacity: 1;
+  transform: none;
+}
+figure.reveal-ready:focus-within img,
+figure.reveal-ready:target img {
+  clip-path: inset(0);
+}
+.process-index li {
+  position: relative;
+}
+.process-index li::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: #f3a46f;
+  opacity: 0.45;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 900ms cubic-bezier(0.2, 0.65, 0.3, 1) var(--reveal-delay, 0ms);
+}
+.motion-enabled .process-index li.is-revealed::after {
+  transform: scaleX(1);
+}
+.motion-enabled .process-steps details[open] .step-content {
+  animation: enter 350ms both;
+}
+.motion-enabled .lightbox[open] {
+  animation: enter 220ms both;
+}
+.text-link:hover .arrow {
+  transform: translateX(4px);
+}
+.text-link:hover .arrow.diagonal {
+  transform: translate(3px, -3px) rotate(-45deg);
+}
+
+@media (max-width: 1100px) {
+  .brand-logo {
+    width: 156px;
+  }
+  .brand-logo--plate {
+    width: 200px;
+  }
+}
+@media (max-width: 620px) {
+  .brand-logo {
+    width: 146px;
+  }
+  .brand-logo--plate {
+    width: 196px;
+  }
+  .reveal-ready {
+    transform: translateY(18px);
+  }
+  .is-revealed {
+    transform: none;
+  }
+  .loader-caption {
+    gap: 12px;
+  }
+  .welcome-loader img {
+    width: 250px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .welcome-loader,
+  .reading-progress {
+    display: none !important;
+  }
+  .hero-line > span,
+  .hero-visual,
+  .reveal-ready {
+    opacity: 1;
+    transform: none;
+  }
+  figure.reveal-ready img {
+    clip-path: none;
+  }
+  .process-index li::after {
+    display: none;
+  }
+  .text-link:hover .arrow {
+    transform: none;
+  }
+  .text-link:hover .arrow.diagonal {
+    transform: rotate(-45deg);
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

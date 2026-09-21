@@ -1,0 +1,18 @@
+---
+interface Props {
+  plate?: boolean;
+  priority?: boolean;
+}
+const { plate = false, priority = false } = Astro.props;
+---
+
+<a class:list={['brand-logo', { 'brand-logo--plate': plate }]} href="/" aria-label="Unit Alfa home">
+  <img
+    src="/images/unit-alfa-logo.png"
+    width="944"
+    height="382"
+    alt="Unit Alfa"
+    fetchpriority={priority ? 'high' : 'auto'}
+    decoding="async"
+  />
+</a>
