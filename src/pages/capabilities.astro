@@ -1,0 +1,225 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import QuoteBand from '../components/QuoteBand.astro';
+import Arrow from '../components/Arrow.astro';
+import { machines, process } from '../data/machines';
+---
+
+<Layout
+  title="Plant & Capabilities — Pressing, Fabrication, Welding | Unit Alfa"
+  description="Unit Alfa’s published Bommasandra plant capabilities: 20–160 T mechanical presses, 300 T hydraulic press, shearing, MIG/MAG, spot welding and CNC wire EDM."
+>
+  <PageIntro
+    label="CAPABILITIES / PLANT"
+    title="THE PROCESS BEHIND THE PART."
+    intro="Sheet preparation. Press work. Welding. Tooling. A connected set of manufacturing capabilities for small components and fabricated assemblies."
+  />
+  <section class="plant-overview container section-bottom">
+    <figure data-reveal>
+      <img
+        src="/images/published-factory-interior.webp"
+        width="680"
+        height="510"
+        alt="Company-published Unit Alfa shop-floor infrastructure photograph."
+        fetchpriority="high"
+      />
+      <figcaption>Published infrastructure photograph · Unit Alfa</figcaption>
+    </figure>
+    <div class="plant-numbers" data-reveal>
+      <div>
+        <strong>
+          6,000<span>sq ft</span>
+        </strong>
+        <p>Shop floor · published profile</p>
+      </div>
+      <div>
+        <strong>
+          4,000<span>sq ft</span>
+        </strong>
+        <p>Open area · published profile</p>
+      </div>
+      <p class="muted">
+        Approximate areas in the company profile. Discuss current layout, equipment availability and
+        your part requirements before a visit.
+      </p>
+      <a class="text-link" href="/contact/">
+        Arrange a plant discussion <Arrow />
+      </a>
+    </div>
+  </section>
+  <section class="dark-section">
+    <div class="container process-walk">
+      <div class="process-intro">
+        <p class="eyebrow">01 / WALK THROUGH THE PROCESS</p>
+        <h2>
+          FROM BLANK
+          <br />
+          TO ASSEMBLY.
+        </h2>
+        <p>
+          A typical route depends on the part. Select a stage to see the work and the published
+          equipment behind it.
+        </p>
+      </div>
+      <div class="process-steps">
+        {process.map((step, i) => (
+          <details name="manufacturing-process" open={i === 0} data-reveal>
+            <summary>
+              <span class="step-number">0{i + 1}</span>
+              <h3>{step.name}</h3>
+              <span class="disclosure-icon" aria-hidden="true">
+                +
+              </span>
+            </summary>
+            <div class="step-content">
+              <h4>{step.sub}</h4>
+              <p>{step.text}</p>
+              <span class="step-equipment">{step.equipment}</span>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">02 / MACHINE CAPABILITIES</p>
+        <h2>THE EQUIPMENT LIST.</h2>
+      </div>
+      <p class="section-aside">
+        Published plant specifications.
+        <br />
+        Part feasibility is confirmed against your drawing.
+      </p>
+    </div>
+    <div
+      class="machine-table-wrap"
+      tabindex="0"
+      role="region"
+      aria-label="Scrollable plant equipment table"
+    >
+      <table class="machine-table">
+        <caption class="sr-only">
+          Unit Alfa’s published equipment and manufacturing capabilities
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Equipment</th>
+            <th scope="col">Published specification</th>
+            <th scope="col">Manufacturing use</th>
+          </tr>
+        </thead>
+        <tbody>
+          {machines.map((row, i) => (
+            <tr>
+              <th scope="row">
+                <span class="machine-index">{String(i + 1).padStart(2, '0')}</span>
+                {row[0]}
+              </th>
+              <td>{row[1]}</td>
+              <td>{row[2]}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">
+      A machine rating is not a blanket part limit. Grade, thickness, geometry, tooling and the
+      operation determine feasibility. Confirm the current process route and any external finishing
+      with your quotation.
+    </p>
+  </section>
+  <section class="tooling-section">
+    <div class="container tooling-grid">
+      <figure data-reveal>
+        <img
+          src="/images/weldtable-assembly.webp"
+          width="720"
+          height="720"
+          loading="lazy"
+          alt="Hands positioning a Unit Alfa Weldtables perforated steel module during assembly."
+        />
+        <figcaption>Modular welding-table assembly · Unit Alfa / Weldtables</figcaption>
+      </figure>
+      <div data-reveal>
+        <p class="eyebrow">03 / TOOLING & DEVELOPMENT</p>
+        <h2>
+          THE SETUP
+          <br />
+          MATTERS.
+        </h2>
+        <p>
+          Jigs and fixtures, specialty tooling, small-part development, machining and assembly
+          support are part of the published service range.
+        </p>
+        <p>
+          For a new part, share the drawing revision and expected batch. For an existing tool or
+          fixture, send its condition, function and the change required so the scope can be
+          reviewed.
+        </p>
+        <a class="text-link" href="/enquiry/?part=Tooling%20and%20fixture%20work">
+          Discuss tooling or a fixture <Arrow />
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="section container video-section">
+    <div>
+      <p class="eyebrow">04 / WELDING IN PRACTICE</p>
+      <h2>
+        SEE THE
+        <br />
+        JOINING WORK.
+      </h2>
+      <p>
+        Unit Alfa’s published video demonstrates automated welding of an excavator battery box on
+        modular weld tables.
+      </p>
+      <p class="small muted">
+        A demonstration from the company’s channel. The video is not a statement of current plant
+        automation capacity.
+      </p>
+    </div>
+    <div>
+      <div class="video-frame" id="welding-video">
+        <button
+          class="video-load"
+          data-video="l7yseQ1enEg"
+          aria-label="Load YouTube video: welding an excavator battery box"
+        >
+          <span class="play-symbol" aria-hidden="true">
+            ▶
+          </span>
+          <span>
+            EXCAVATOR BATTERY BOX<strong>Watch the welding demonstration</strong>
+            <small>Loads the YouTube player when selected</small>
+          </span>
+        </button>
+      </div>
+      <a
+        class="text-link"
+        href="https://www.youtube.com/watch?v=l7yseQ1enEg"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Watch on Unit Alfa’s YouTube channel <Arrow diagonal />
+      </a>
+    </div>
+  </section>
+  <QuoteBand />
+  <script>
+    document.querySelector<HTMLButtonElement>('[data-video]')?.addEventListener('click', (e) => {
+      const button = e.currentTarget as HTMLButtonElement;
+      const frame = document.createElement('iframe');
+      frame.src = `https://www.youtube-nocookie.com/embed/${button.dataset.video}?autoplay=1`;
+      frame.title = 'Unit Alfa excavator battery-box welding demonstration';
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture';
+      frame.allowFullscreen = true;
+      frame.referrerPolicy = 'strict-origin-when-cross-origin';
+      button.replaceWith(frame);
+      frame.focus();
+    });
+  </script>
+</Layout>

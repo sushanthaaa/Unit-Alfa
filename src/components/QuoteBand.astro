@@ -1,0 +1,25 @@
+---
+import Arrow from './Arrow.astro';
+interface Props {
+  title?: string;
+}
+const { title = 'HAVE A DRAWING?\nLET’S TALK PARTS.' } = Astro.props;
+---
+
+<section class="quote-band">
+  <div class="container quote-inner">
+    <div>
+      <p class="eyebrow">DRAWING · MATERIAL · QUANTITY</p>
+      <h2>{title.replace(/\\n/g, '\n')}</h2>
+    </div>
+    <div>
+      <p>
+        Send the part details, batch requirement and delivery location. We’ll discuss the next step
+        with you.
+      </p>
+      <a class="button button-dark" href="/enquiry/">
+        Request a quotation <Arrow />
+      </a>
+    </div>
+  </div>
+</section>

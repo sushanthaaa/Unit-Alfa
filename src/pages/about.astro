@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import QuoteBand from '../components/QuoteBand.astro';
+import Arrow from '../components/Arrow.astro';
+import { company } from '../data/company';
+---
+
+<Layout
+  title="About Unit Alfa — Bommasandra Manufacturer Since 1991"
+  description="Established in 1991, Unit Alfa is a proprietorship manufacturing sheet-metal pressed parts and fabricated assemblies in Bommasandra, Bengaluru."
+>
+  <PageIntro
+    label="ABOUT UNIT ALFA"
+    title="A PRESS SHOP. A FABRICATION PARTNER."
+    intro="Manufacturing sheet-metal components for hydraulic excavators, automotive and industrial applications. Established in 1991. Based in Bommasandra."
+  />
+  <section class="container about-story section-bottom">
+    <figure class="about-photo" data-reveal>
+      <img
+        src="/images/unit-alfa-entrance.webp"
+        alt="Unit Alfa’s published factory entrance with the company sign and yellow gate."
+        width="640"
+        height="320"
+        fetchpriority="high"
+      />
+      <figcaption>The published Unit Alfa entrance photograph, Bommasandra.</figcaption>
+      <div class="origin-block">
+        <strong>1991</strong>
+        <span>
+          THE YEAR
+          <br />
+          WE STARTED
+        </span>
+      </div>
+    </figure>
+    <div class="prose" data-reveal>
+      <p class="eyebrow">A PRACTICAL MANUFACTURING BASE</p>
+      <h2>
+        SMALL PARTS.
+        <br />
+        REAL RESPONSIBILITY.
+      </h2>
+      <p>
+        A bracket, an enclosure or a pressed spacer has a job to do in a larger assembly. Its
+        material, geometry and fit belong at the centre of the conversation.
+      </p>
+      <p>
+        Unit Alfa’s published range covers battery boxes, grease baths, shims, spacers, seat
+        adjusters, cylinder mounting brackets and other industrial components. The business combines
+        press work and fabrication with tooling, machining and assembly support.
+      </p>
+      <p>
+        Operating from Bommasandra’s industrial belt, Unit Alfa is led by proprietor{' '}
+        <strong>{company.proprietor}</strong>.
+      </p>
+      <a class="text-link" href="/products/">
+        See the component range <Arrow />
+      </a>
+    </div>
+  </section>
+  <section class="facts-section">
+    <div class="container">
+      <p class="eyebrow">COMPANY PARTICULARS</p>
+      <dl class="company-facts">
+        <div>
+          <dt>Trade name</dt>
+          <dd>UNIT ALFA</dd>
+        </div>
+        <div>
+          <dt>Established</dt>
+          <dd>1991</dd>
+        </div>
+        <div>
+          <dt>Business</dt>
+          <dd>Sheet-metal pressed & fabricated components</dd>
+        </div>
+        <div>
+          <dt>Proprietor</dt>
+          <dd>
+            {company.proprietor}
+            <small>Legal name: {company.legalName}</small>
+          </dd>
+        </div>
+        <div>
+          <dt>GSTIN</dt>
+          <dd>{company.gstin}</dd>
+        </div>
+        <div>
+          <dt>Manufacturing location</dt>
+          <dd>Bommasandra 4th Phase, Bengaluru</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+  <section class="section container floor-story">
+    <div data-reveal>
+      <p class="eyebrow">THE PUBLISHED PLANT PROFILE</p>
+      <h2>
+        ROOM TO
+        <br />
+        MAKE THINGS.
+      </h2>
+      <p>
+        The company profile lists approximately 6,000 sq ft of shop floor and 4,000 sq ft of open
+        area. For current capacity, layout or a plant visit, speak with Unit Alfa.
+      </p>
+      <a class="text-link" href="/capabilities/">
+        Plant & machinery <Arrow />
+      </a>
+    </div>
+    <figure data-reveal>
+      <img
+        src="/images/published-factory-interior.webp"
+        width="680"
+        height="510"
+        loading="lazy"
+        alt="Unit Alfa company-published infrastructure photograph with overhead gantry and workshop equipment."
+      />
+      <figcaption>Infrastructure photograph from Unit Alfa’s existing website.</figcaption>
+    </figure>
+  </section>
+  <QuoteBand />
+</Layout>

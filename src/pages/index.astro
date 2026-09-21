@@ -1,0 +1,182 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Arrow from '../components/Arrow.astro';
+import ProductCard from '../components/ProductCard.astro';
+import QuoteBand from '../components/QuoteBand.astro';
+import Lightbox from '../components/Lightbox.astro';
+import { products } from '../data/products';
+---
+
+<Layout
+  title="UNIT ALFA — Sheet-Metal & Excavator Components, Bengaluru"
+  description="Sheet-metal pressed parts and fabricated assemblies for hydraulic excavators and industrial equipment. Manufacturing in Bommasandra, Bengaluru, since 1991."
+>
+  <section class="hero container">
+    <div class="hero-copy">
+      <p class="eyebrow">
+        <span class="short-rule"></span> PRESSED & FABRICATED COMPONENTS
+      </p>
+      <h1>
+        METAL PARTS.
+        <br />
+        MADE TO
+        <br />
+        <span>YOUR DRAWING.</span>
+      </h1>
+      <p class="hero-intro">
+        From a formed component to a welded assembly. Sheet-metal manufacturing for hydraulic
+        excavators and industrial equipment, from our shop in Bommasandra.
+      </p>
+      <div class="button-row">
+        <a class="button" href="/enquiry/">
+          Discuss your component <Arrow />
+        </a>
+        <a class="text-link" href="/products/">
+          View products <Arrow diagonal />
+        </a>
+      </div>
+      <div class="hero-origin">
+        <strong>1991</strong>
+        <span>
+          ESTABLISHED
+          <br />
+          BENGALURU, INDIA
+        </span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="image-index">
+        <span>01 / THE SHOP FLOOR</span>
+        <span>BOMMASANDRA</span>
+      </div>
+      <div class="plant-frame">
+        <img
+          src="/images/published-factory-interior.webp"
+          width="680"
+          height="510"
+          alt="Published Unit Alfa workshop interior with a yellow overhead gantry, storage racks and turquoise machine guards."
+          fetchpriority="high"
+        />
+      </div>
+      <div class="hero-image-caption">
+        <span>Where metal takes shape.</span>
+        <a href="/capabilities/" aria-label="Explore Unit Alfa's plant capabilities">
+          <Arrow diagonal />
+        </a>
+      </div>
+      <div class="spec-strip">
+        <div>
+          <strong>20–160 T</strong>
+          <span>MECHANICAL PRESSES</span>
+        </div>
+        <div>
+          <strong>300 T</strong>
+          <span>HYDRAULIC PRESS</span>
+        </div>
+        <span class="spec-note">
+          Published
+          <br />
+          plant capabilities
+        </span>
+      </div>
+    </div>
+  </section>
+  <section class="home-intro">
+    <div class="container intro-grid">
+      <p class="eyebrow">01 / BUILT AROUND THE PART</p>
+      <h2>
+        THE DETAIL IS
+        <br />
+        IN THE MAKING.
+      </h2>
+      <div>
+        <p>
+          Battery boxes. Grease baths. Mounting brackets. The components that fit into a larger
+          machine — and need to fit the drawing.
+        </p>
+        <a class="text-link" href="/capabilities/">
+          Explore our capabilities <Arrow />
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="section container">
+    <div class="section-heading" data-reveal>
+      <div>
+        <p class="eyebrow">02 / THE COMPONENT RANGE</p>
+        <h2>PARTS WITH A PURPOSE.</h2>
+      </div>
+      <a class="text-link" href="/products/">
+        Explore the catalogue <Arrow />
+      </a>
+    </div>
+    <div class="featured-products">
+      {[products[0], products[1], products[4]].map((product) => (
+        <ProductCard product={product} compact />
+      ))}
+    </div>
+  </section>
+  <section class="dark-section">
+    <div class="container home-process">
+      <div data-reveal>
+        <p class="eyebrow">03 / FROM SHEET TO ASSEMBLY</p>
+        <h2>
+          ONE PART.
+          <br />
+          SEVERAL DISCIPLINES.
+        </h2>
+        <p>
+          Shearing, press work, welding and machining, with tooling and assembly support. A
+          practical manufacturing base for light and medium industrial components.
+        </p>
+        <a class="text-link light-link" href="/capabilities/">
+          Inside our capabilities <Arrow />
+        </a>
+      </div>
+      <ol class="process-index">
+        {[
+          'Shear the blank',
+          'Press the form',
+          'Weld the assembly',
+          'Deburr & specify finish',
+          'Inspect to agreed requirements',
+        ].map((label, i) => (
+          <li data-reveal>
+            <span>0{i + 1}</span>
+            <strong>{label}</strong>
+            <Arrow />
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+  <section class="section container home-location">
+    <figure data-reveal>
+      <img
+        src="/images/unit-alfa-entrance.webp"
+        width="640"
+        height="320"
+        alt="Published entrance photograph with Unit Alfa signage above the gate."
+        loading="lazy"
+      />
+      <figcaption>Unit Alfa · published Bommasandra entrance photograph</figcaption>
+    </figure>
+    <div data-reveal>
+      <p class="eyebrow">04 / BENGALURU, SINCE 1991</p>
+      <h2>
+        ROOTED IN
+        <br />
+        BOMMASANDRA.
+      </h2>
+      <p>
+        Unit Alfa manufactures sheet-metal pressed and fabricated components from the KIADB
+        Industrial Area, in Bengaluru’s Hosur Road industrial belt.
+      </p>
+      <a class="text-link" href="/about/">
+        Meet Unit Alfa <Arrow />
+      </a>
+    </div>
+  </section>
+  <QuoteBand />
+  <Lightbox />
+</Layout>

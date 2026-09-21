@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import ProductCard from '../components/ProductCard.astro';
+import QuoteBand from '../components/QuoteBand.astro';
+import Lightbox from '../components/Lightbox.astro';
+import { products } from '../data/products';
+const categories = [
+  'All components',
+  'Fabricated assemblies',
+  'Pressed & small parts',
+  'Tooling & custom work',
+];
+const origin = Astro.site!;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: products.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'Product',
+      name: p.name,
+      description: p.description,
+      url: new URL(`/products/#${p.id}`, origin).href,
+      manufacturer: { '@id': new URL('/#organization', origin).href },
+      ...(!p.generated ? { image: new URL(`/images/${p.image}.webp`, origin).href } : {}),
+    },
+  })),
+};
+---
+
+<Layout
+  title="Sheet-Metal Products — Battery Boxes, Brackets & Assemblies | Unit Alfa"
+  description="Explore Unit Alfa’s excavator battery boxes, grease baths, brackets, shims, spacers, seat adjusters, latch assemblies and custom fabrication in Bengaluru."
+>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  <PageIntro
+    label="PRODUCTS & COMPONENTS"
+    title="MADE FOR THE ASSEMBLY."
+    intro="Pressed parts, fabricated enclosures and industrial assemblies. Start with a product family. Final material, dimensions, tolerances and batch requirements are agreed against your drawing."
+  />
+  <section class="container section-bottom" aria-label="Component catalogue">
+    <div class="catalogue-toolbar">
+      <div class="filter-group" role="group" aria-label="Filter product category">
+        {categories.map((category, i) => (
+          <button class="filter-button" data-filter={category} aria-pressed={i === 0}>
+            {category}
+          </button>
+        ))}
+      </div>
+      <p id="product-count" role="status">
+        10 component families
+      </p>
+    </div>
+    <div class="product-grid">
+      {products.map((product) => (
+        <ProductCard product={product} />
+      ))}
+    </div>
+    <p class="catalogue-note">
+      Company catalogue photographs are retained at their original resolution. Generated
+      illustrations are labelled and show the component type only; they are not production samples
+      or dimensional references.
+    </p>
+  </section>
+  <QuoteBand title="YOUR PART ISN’T HERE?\nSEND THE DRAWING." />
+  <Lightbox />
+  <script>
+    const filters = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+    const cards = document.querySelectorAll<HTMLElement>('.product-grid [data-category]');
+    filters.forEach((button) =>
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        let count = 0;
+        filters.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        cards.forEach((card) => {
+          card.hidden = filter !== 'All components' && filter !== card.dataset.category;
+          if (!card.hidden) {
+            count++;
+            card.classList.add('is-revealed');
+          }
+        });
+        document.querySelector('#product-count')!.textContent =
+          `${count} component ${count === 1 ? 'family' : 'families'}`;
+      }),
+    );
+  </script>
+</Layout>

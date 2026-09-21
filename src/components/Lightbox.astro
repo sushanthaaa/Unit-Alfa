@@ -1,0 +1,37 @@
+<dialog class="lightbox" aria-label="Product photograph">
+  <button class="lightbox-close" autofocus aria-label="Close image">
+    Close <span aria-hidden="true">×</span>
+  </button>
+  <figure>
+    <img alt="" width="720" height="540" />
+    <figcaption></figcaption>
+  </figure>
+</dialog>
+<script>
+  const modal = document.querySelector<HTMLDialogElement>('.lightbox');
+  let opener: HTMLAnchorElement | null = null;
+  document.querySelectorAll<HTMLAnchorElement>('a[data-lightbox]').forEach((link) =>
+    link.addEventListener('click', (event) => {
+      if (!modal?.showModal) return;
+      event.preventDefault();
+      opener = link;
+      const source = link.querySelector<HTMLImageElement>('img');
+      const image = modal.querySelector('img')!;
+      image.src = link.href;
+      image.alt = source?.alt || '';
+      image.width = Number(source?.getAttribute('width')) || 720;
+      image.height = Number(source?.getAttribute('height')) || 540;
+      modal.querySelector('figcaption')!.textContent = link.dataset.caption || '';
+      modal.showModal();
+      document.body.classList.add('modal-open');
+    }),
+  );
+  modal?.querySelector('button')?.addEventListener('click', () => modal.close());
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) modal.close();
+  });
+  modal?.addEventListener('close', () => {
+    document.body.classList.remove('modal-open');
+    opener?.focus();
+  });
+</script>

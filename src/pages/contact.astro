@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Arrow from '../components/Arrow.astro';
+import { company } from '../data/company';
+---
+
+<Layout
+  title="Contact Unit Alfa — Bommasandra 4th Phase, Bengaluru"
+  description="Contact Unit Alfa at No. 15, 1st Cross, KIADB Industrial Area, Bommasandra 4th Phase, Bengaluru 560099. Phone, enquiry email, GSTIN and factory directions."
+>
+  <PageIntro
+    label="CONTACT / VISIT THE WORKS"
+    title="FIND US IN BOMMASANDRA."
+    intro="For a component enquiry, drawing review or plant visit, contact the team at our Bommasandra address."
+  />
+  <section class="container contact-layout section-bottom">
+    <div class="contact-details">
+      <p class="eyebrow">THE WORKS</p>
+      <h2>UNIT ALFA</h2>
+      <address>
+        No. 15, 1st Cross,
+        <br />
+        KIADB Industrial Area,
+        <br />
+        Bommasandra 4th Phase,
+        <br />
+        Bengaluru, Karnataka 560099, India.
+      </address>
+      <a class="text-link" href={company.maps} target="_blank" rel="noreferrer">
+        Open directions in Google Maps <Arrow diagonal />
+      </a>
+      <dl>
+        <div>
+          <dt>Phone</dt>
+          <dd>
+            <a href={company.phoneHref}>{company.phone}</a>
+          </dd>
+        </div>
+        <div>
+          <dt>Enquiries</dt>
+          <dd>
+            <a href={`mailto:${company.email}`}>{company.email}</a>
+          </dd>
+        </div>
+        <div>
+          <dt>Plant visits</dt>
+          <dd>Please call ahead to arrange your visit.</dd>
+        </div>
+        <div>
+          <dt>GSTIN</dt>
+          <dd>{company.gstin}</dd>
+        </div>
+      </dl>
+      <a class="button button-dark" href="/enquiry/">
+        Prepare a component enquiry <Arrow />
+      </a>
+    </div>
+    <div>
+      <figure>
+        <img
+          src="/images/unit-alfa-entrance.webp"
+          width="640"
+          height="320"
+          alt="Published Unit Alfa entrance photograph with company sign and yellow industrial gate."
+          fetchpriority="high"
+        />
+        <figcaption>Look for the Unit Alfa sign · published entrance photograph</figcaption>
+      </figure>
+      <div class="map-frame" id="map-frame">
+        <button class="map-load" data-map={company.mapEmbed}>
+          <span class="eyebrow">BOMMASANDRA 4TH PHASE</span>
+          <strong>Locate the works.</strong>
+          <span class="text-link">
+            Load Google map <Arrow diagonal />
+          </span>
+          <small>Loads Google Maps only when selected.</small>
+        </button>
+      </div>
+      <noscript>
+        <p>
+          <a href={company.maps}>View the factory location on Google Maps.</a>
+        </p>
+      </noscript>
+      <div class="directions-note">
+        <h3>Coming from Hosur Road?</h3>
+        <p>
+          Use the factory map for the approach into KIADB Industrial Area, Bommasandra 4th Phase.
+          Call ahead for the final approach and entrance. If arriving by the Yellow Line, confirm
+          the last-mile connection with the team before travelling.
+        </p>
+      </div>
+    </div>
+  </section>
+  <script>
+    document.querySelector<HTMLButtonElement>('[data-map]')?.addEventListener('click', (e) => {
+      const button = e.currentTarget as HTMLButtonElement;
+      const frame = document.createElement('iframe');
+      frame.src = button.dataset.map!;
+      frame.title = 'Google map for Unit Alfa, Bommasandra Industrial Area';
+      frame.referrerPolicy = 'no-referrer-when-downgrade';
+      frame.allowFullscreen = true;
+      button.replaceWith(frame);
+    });
+  </script>
+</Layout>

@@ -1,0 +1,253 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Arrow from '../components/Arrow.astro';
+import { company } from '../data/company';
+---
+
+<Layout
+  title="Request a Quote — Sheet-Metal Components & Fabrication | Unit Alfa"
+  description="Prepare a component enquiry for Unit Alfa. Include your part drawing, quantity, material, thickness, finish and delivery requirement for an accurate discussion."
+>
+  <PageIntro
+    label="ENQUIRY / REQUEST FOR QUOTATION"
+    title="LET’S START WITH YOUR PART."
+    intro="A drawing, a sample or a part requirement. Tell us what you need, and prepare an enquiry to the Unit Alfa team."
+  />
+  <section class="container enquiry-layout section-bottom">
+    <aside class="enquiry-aside">
+      <p class="eyebrow">BEFORE YOU SEND</p>
+      <h2>
+        THE DETAILS
+        <br />
+        THAT HELP.
+      </h2>
+      <ol>
+        <li>Part drawing and revision, or sample photographs.</li>
+        <li>Material, thickness and critical dimensions.</li>
+        <li>Batch quantity and repeat requirement.</li>
+        <li>Finish, inspection and delivery requirements.</li>
+      </ol>
+      <div class="contact-note">
+        <p>Prefer a conversation?</p>
+        <a href={company.phoneHref}>{company.phone}</a>
+        <a href={`mailto:${company.email}`}>{company.email}</a>
+      </div>
+      <p class="small muted">
+        This form prepares an email. You review and send it from your own email app. Drawings are
+        attached there.
+      </p>
+    </aside>
+    <div>
+      <form
+        id="rfq-form"
+        action={`mailto:${company.email}`}
+        method="post"
+        enctype="text/plain"
+        data-email={company.email}
+      >
+        <p class="form-required">
+          Fields marked <span aria-hidden="true">*</span> are required.
+        </p>
+        <fieldset>
+          <legend>
+            <span>01</span> Your contact details
+          </legend>
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">
+                Your name <span>*</span>
+              </label>
+              <input id="name" name="name" autocomplete="name" maxlength="250" required />
+            </div>
+            <div class="field">
+              <label for="company">
+                Company <span>*</span>
+              </label>
+              <input
+                id="company"
+                name="company"
+                autocomplete="organization"
+                maxlength="250"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="email">
+                Email <span>*</span>
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                maxlength="250"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="250" />
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>
+            <span>02</span> The component
+          </legend>
+          <div class="form-grid">
+            <div class="field full">
+              <label for="part">
+                Part / assembly name <span>*</span>
+              </label>
+              <input
+                id="part"
+                name="part"
+                maxlength="250"
+                required
+                placeholder="e.g. Excavator battery box"
+              />
+            </div>
+            <div class="field">
+              <label for="quantity">
+                Quantity / batch <span>*</span>
+              </label>
+              <input
+                id="quantity"
+                name="quantity"
+                maxlength="250"
+                required
+                placeholder="e.g. 100 pieces per batch"
+              />
+            </div>
+            <div class="field">
+              <label for="material">Material / thickness</label>
+              <input
+                id="material"
+                name="material"
+                maxlength="250"
+                placeholder="Grade and thickness, if known"
+              />
+            </div>
+            <div class="field">
+              <label for="industry">Target industry</label>
+              <select id="industry" name="industry">
+                <option value="">Select an industry</option>
+                <option>Excavators / earthmoving</option>
+                <option>Automotive</option>
+                <option>Industrial equipment</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="drawing">Drawing / sample status</label>
+              <select id="drawing" name="drawing">
+                <option value="">Select status</option>
+                <option>Drawing available</option>
+                <option>Sample available</option>
+                <option>Drawing and sample available</option>
+                <option>Development discussion needed</option>
+              </select>
+            </div>
+            <div class="drawing-placeholder full">
+              <span class="attachment-mark" aria-hidden="true">
+                ↗
+              </span>
+              <div>
+                <strong>Attach your drawing in the email</strong>
+                <p>
+                  File upload is not connected here. After preparing the enquiry, attach the
+                  drawing, CAD file or sample photographs in your email app.
+                </p>
+                <label class="sr-only" for="drawing-file">
+                  Drawing upload — use email attachments
+                </label>
+                <input id="drawing-file" type="file" disabled aria-describedby="attachment-help" />
+                <span id="attachment-help" class="small">
+                  No files are uploaded or stored by this form.
+                </span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="finish">Finish / surface treatment</label>
+              <input
+                id="finish"
+                name="finish"
+                maxlength="250"
+                placeholder="As specified in the drawing"
+              />
+            </div>
+            <div class="field">
+              <label for="delivery">Delivery location / target</label>
+              <input
+                id="delivery"
+                name="delivery"
+                maxlength="250"
+                placeholder="Location and requested date"
+              />
+            </div>
+            <div class="field full">
+              <label for="notes">Additional requirements</label>
+              <textarea
+                id="notes"
+                name="notes"
+                rows="5"
+                maxlength="2000"
+                placeholder="Critical tolerances, tooling, inspection documents, repeat volumes or other details."
+              ></textarea>
+            </div>
+          </div>
+        </fieldset>
+        <p class="small muted form-privacy">
+          Your entries stay in this page until you choose to open your email app, copy or download
+          the draft. <a href="/privacy/">Privacy details</a>.
+        </p>
+        <p id="form-error" role="alert" class="form-error" hidden></p>
+        <button class="button button-dark" type="submit">
+          Prepare enquiry <Arrow />
+        </button>
+        <noscript>
+          <p class="form-notice">
+            JavaScript is off. Use <a href={`mailto:${company.email}`}>{company.email}</a> directly,
+            or submit these details to your email app with the button above.
+          </p>
+        </noscript>
+      </form>
+      <section
+        id="draft-panel"
+        class="draft-panel"
+        hidden
+        aria-labelledby="draft-title"
+        tabindex="-1"
+      >
+        <p class="eyebrow">READY TO REVIEW</p>
+        <h2 id="draft-title">YOUR ENQUIRY DRAFT.</h2>
+        <p>
+          This has not been sent. Review the details, open your email app, attach your drawing and
+          send the enquiry.
+        </p>
+        <label class="sr-only" for="draft-text">
+          Prepared enquiry text
+        </label>
+        <textarea id="draft-text" readonly rows="12"></textarea>
+        <div class="button-row">
+          <a id="email-draft" class="button" href={`mailto:${company.email}`}>
+            Open email app <Arrow />
+          </a>
+          <button class="button button-outline" type="button" id="copy-draft">
+            Copy draft
+          </button>
+          <button class="text-link" type="button" id="download-draft">
+            Download .txt
+          </button>
+        </div>
+        <p class="small">
+          If your email app does not open, copy the draft and send it to{' '}
+          <a href={`mailto:${company.email}`}>{company.email}</a>.
+        </p>
+        <p id="draft-status" role="status" class="small"></p>
+      </section>
+    </div>
+  </section>
+  <script src="../scripts/enquiry.ts"></script>
+</Layout>

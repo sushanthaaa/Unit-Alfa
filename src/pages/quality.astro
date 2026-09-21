@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import QuoteBand from '../components/QuoteBand.astro';
+import Arrow from '../components/Arrow.astro';
+---
+
+<Layout
+  title="Quality & Drawing Requirements — Unit Alfa, Bengaluru"
+  description="Define material, critical dimensions, weld requirements and inspection documentation for your component. Read Unit Alfa’s historical ISO certification status honestly."
+>
+  <PageIntro
+    label="QUALITY / PART REQUIREMENTS"
+    title="QUALITY STARTS WITH THE DRAWING."
+    intro="A useful quotation starts with a clear specification. Tell us which dimensions, interfaces and checks matter to the finished assembly."
+  />
+  <section class="container quality-layout section-bottom">
+    <div class="quality-principle" data-reveal>
+      <span class="large-section-number">01—04</span>
+      <h2>
+        AGREE THE
+        <br />
+        REQUIREMENT.
+        <br />
+        CHECK THE PART.
+      </h2>
+      <p>
+        Use these four points to define the acceptance requirements for your enquiry. The inspection
+        plan and supporting records should be agreed for the specific part.
+      </p>
+      <a class="text-link" href="/enquiry/">
+        Include your requirements <Arrow />
+      </a>
+    </div>
+    <ol class="quality-list">
+      {[
+        [
+          'Material & revision',
+          'Specify the grade, sheet thickness, drawing number and revision. Include any material certificate or traceability requirement.',
+        ],
+        [
+          'Dimensions & fit',
+          'Mark critical dimensions, tolerances, datums and mating interfaces. Identify checks that must be reviewed with a sample.',
+        ],
+        [
+          'Welds & surface',
+          'Show weld symbols, seam locations and finish requirements. State edge condition, coating and any test requirement explicitly.',
+        ],
+        [
+          'Inspection & acceptance',
+          'List the inspection report, sample approval or other documentation needed. Confirm acceptance criteria and responsibilities before production.',
+        ],
+      ].map(([title, copy], i) => (
+        <li data-reveal>
+          <span>0{i + 1}</span>
+          <div>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+  <section class="certification-section">
+    <div class="container certification-grid">
+      <p class="eyebrow">CERTIFICATION STATUS</p>
+      <div>
+        <h2>A CLEAR RECORD.</h2>
+        <p>
+          Unit Alfa’s published company profile refers to <strong>ISO 9001:2008</strong>. This is a
+          historical reference. A current certificate, its scope and validity have not been verified
+          for this website.
+        </p>
+        <p>
+          ISO 9001:2008 is a superseded edition. This website does not present that listing as
+          current certification. If your vendor approval requires a valid certificate, request the
+          current document directly from Unit Alfa.
+        </p>
+        <div class="button-row">
+          <a class="text-link" href="/enquiry/?part=Vendor%20qualification%20documents">
+            Request qualification documents <Arrow />
+          </a>
+          <a
+            class="source-link"
+            href="https://www.unitalfa.in/unit-alfa-company-profile/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Published company profile ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <QuoteBand title="CRITICAL TO YOUR ASSEMBLY?\nPUT IT ON THE DRAWING." />
+</Layout>

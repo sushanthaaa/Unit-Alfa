@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { company } from '../data/company';
+---
+
+<Layout
+  title="Website Privacy — Unit Alfa"
+  description="How this Unit Alfa website handles enquiry drafts, email, drawing attachments and optional Google Maps and YouTube content."
+>
+  <PageIntro
+    label="WEBSITE INFORMATION"
+    title="PRIVACY."
+    intro="This notice describes how the website currently works. Updated 21 September 2026."
+  />
+  <article class="container legal-copy section-bottom">
+    <h2>Enquiry drafts</h2>
+    <p>
+      The enquiry form prepares a draft in your browser. It does not submit your entries to a Unit
+      Alfa website server, upload files or save the draft in browser storage. Opening your email app
+      transfers the prepared text to that app. Copying or downloading the draft takes place only
+      when you select that action.
+    </p>
+    <h2>Email and drawings</h2>
+    <p>
+      When you send an email, your contact details, message and attachments are handled by your
+      email provider and the recipient’s provider. Share only information needed for the enquiry. If
+      a drawing needs confidentiality arrangements, contact Unit Alfa before sending it. Ask Unit
+      Alfa directly about retention or deletion of emailed enquiries.
+    </p>
+    <h2>Maps, video and external links</h2>
+    <p>
+      The Google map and YouTube player load only when you choose to load them. Those services
+      receive technical information such as your IP address and may use cookies or other storage
+      under their own policies. External links open third-party services with their own terms.
+    </p>
+    <h2>Hosting and analytics</h2>
+    <p>
+      This website does not include an advertising tracker or an application analytics script. The
+      hosting platform may process access and security logs. A private preview may require the
+      hosting platform’s sign-in; its account and privacy settings apply to that access.
+    </p>
+    <h2>Contact</h2>
+    <p>
+      For questions about an enquiry, email <a href={`mailto:${company.email}`}>{company.email}</a>{' '}
+      or contact Unit Alfa at {company.address}.
+    </p>
+  </article>
+</Layout>

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "GEN-01",
+    "file": "cylinder-mounting-bracket-illustrative.webp",
+    "source": "generated",
+    "date": "2026-09-21",
+    "prompt": "Use case: product-mockup\nAsset type: illustrative industrial catalogue photograph for a website; this is a generic example, not a photograph of any particular manufacturer's actual production.\nScene/backdrop: neutral warm-grey workshop bench, close-up, simple unobtrusive background.\nStyle/medium: modest honest documentary catalogue photography, natural visible metal texture, practical fabrication.\nComposition/framing: landscape approximately 4:3, complete object comfortably within frame, three-quarter view so geometry is clear.\nLighting/mood: restrained soft workshop daylight, realistic diffuse shadows, no cinematic effects.\nConstraints: no brand, logo, letters, numbers, watermark, person, sparks, luxury factory, glossy studio CGI, dramatic styling, or decorative props.\nSubject: exactly one small mild-steel fabricated cylinder mounting bracket: two upright parallel steel ears with aligned plain circular through holes, both welded to a rectangular base plate with practical bolting holes. Practical excavator auxiliary mounting geometry. The ears are evenly spaced and the aligned holes would receive a pivot pin. Visible modest weld beads, subtly scuffed raw steel, no moving assembly or cylinder attached.",
+    "requests": 1,
+    "mode": "built-in image_gen",
+    "attribution": "AI-generated generic illustrative example; not actual Unit Alfa production photography"
+  },
+  {
+    "id": "GEN-02",
+    "file": "shims-and-spacers-illustrative.webp",
+    "source": "generated",
+    "date": "2026-09-21",
+    "prompt": "Use case: product-mockup\nAsset type: illustrative industrial catalogue photograph for a website; this is a generic example, not a photograph of any particular manufacturer's actual production.\nScene/backdrop: neutral warm-grey workshop bench, close-up, simple unobtrusive background.\nStyle/medium: modest honest documentary catalogue photography, natural visible metal texture, practical fabrication.\nComposition/framing: landscape approximately 4:3, complete object comfortably within frame, three-quarter view so geometry is clear.\nLighting/mood: restrained soft workshop daylight, realistic diffuse shadows, no cinematic effects.\nConstraints: no brand, logo, letters, numbers, watermark, person, sparks, luxury factory, glossy studio CGI, dramatic styling, or decorative props.\nSubject: a small collection of plain flat mild-steel shim plates and circular ring spacers of varied thin thickness, arranged simply on the bench. Precise punched or drilled holes, clear flat geometry, subtle machining marks, slightly varied matte silver-grey and darker steel surfaces. Show several individual pieces and a short shallow stack, without adding unrelated tools or components.",
+    "requests": 1,
+    "mode": "built-in image_gen",
+    "attribution": "AI-generated generic illustrative example; not actual Unit Alfa production photography"
+  },
+  {
+    "id": "GEN-03",
+    "file": "latch-assembly-illustrative.webp",
+    "source": "generated",
+    "date": "2026-09-21",
+    "prompt": "Use case: product-mockup\nAsset type: illustrative industrial catalogue photograph for a website; this is a generic example, not a photograph of any particular manufacturer's actual production.\nScene/backdrop: neutral warm-grey workshop bench, close-up, simple unobtrusive background.\nStyle/medium: modest honest documentary catalogue photography, natural visible metal texture, practical fabrication.\nComposition/framing: landscape approximately 4:3, complete object comfortably within frame, three-quarter view so geometry is clear.\nLighting/mood: restrained soft workshop daylight, realistic diffuse shadows, no cinematic effects.\nConstraints: no brand, logo, letters, numbers, watermark, person, sparks, luxury factory, glossy studio CGI, dramatic styling, or decorative props.\nSubject: exactly one simple steel industrial over-centre latch mounted across two short plain metal plates. Practical mechanically coherent pivot pin, operating handle, linking loop and catch geometry. The latch is engaged with its catch. Subtly scuffed steel with visible metal grain and practical fasteners; modest fabricated industrial construction, no colored handle grip.",
+    "requests": 1,
+    "mode": "built-in image_gen",
+    "attribution": "AI-generated generic illustrative example; not actual Unit Alfa production photography"
+  }
+]

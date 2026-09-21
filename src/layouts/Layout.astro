@@ -1,0 +1,203 @@
+---
+import '@fontsource/barlow-condensed/latin-600.css';
+import '@fontsource/barlow-condensed/latin-700.css';
+import '@fontsource/source-sans-3/latin-400.css';
+import '@fontsource/source-sans-3/latin-600.css';
+import '../styles/global.css';
+import { company, navigation } from '../data/company';
+import Arrow from '../components/Arrow.astro';
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+const { title, description, noindex = false } = Astro.props;
+const path = Astro.url.pathname;
+const origin = Astro.site || new URL('https://www.unitalfa.in');
+const canonical = new URL(path, origin);
+const preview = !['www.unitalfa.in', 'unitalfa.in'].includes(origin.hostname);
+const business = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'LocalBusiness'],
+  '@id': new URL('/#organization', origin).href,
+  name: company.name,
+  url: origin.href,
+  foundingDate: company.founded,
+  description:
+    'Manufacturer of sheet-metal pressed and fabricated components for hydraulic excavators and industrial applications in Bommasandra, Bengaluru.',
+  telephone: '+918792904185',
+  email: company.email,
+  identifier: { '@type': 'PropertyValue', propertyID: 'GSTIN', value: company.gstin },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'No. 15, 1st Cross, KIADB Industrial Area, Bommasandra 4th Phase',
+    addressLocality: 'Bengaluru',
+    addressRegion: 'Karnataka',
+    postalCode: '560099',
+    addressCountry: 'IN',
+  },
+  sameAs: ['https://www.tradeindia.com/unit-alfa-5103959/', 'https://www.youtube.com/@UnitAlfaIND'],
+};
+---
+
+<!doctype html>
+<html lang="en-IN" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <script is:inline>
+      document.documentElement.classList.remove('no-js');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1c2225" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {(noindex || preview) && <meta name="robots" content="noindex,follow" />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="UNIT ALFA" />
+    <meta property="og:locale" content="en_IN" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script type="application/ld+json" set:html={JSON.stringify(business)}></script>
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <div class="utility">
+      <div class="container">
+        <span>MANUFACTURING IN BOMMASANDRA, BENGALURU</span>
+        <a href={company.phoneHref}>{company.phone}</a>
+      </div>
+    </div>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="wordmark" href="/" aria-label="Unit Alfa home">
+          <span>
+            UNIT ALFA<span class="brand-square"></span>
+          </span>
+          <small>METAL. FORM. FUNCTION.</small>
+        </a>
+        <button
+          class="menu-toggle"
+          aria-label="Open navigation"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span>Menu</span>
+          <span class="menu-lines" aria-hidden="true"></span>
+        </button>
+        <nav id="main-nav" aria-label="Main navigation">
+          {navigation.map((item) => (
+            <a
+              class="nav-link"
+              href={item.href}
+              aria-current={path.startsWith(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ))}
+          <a class="button button-dark header-quote" href="/enquiry/">
+            Request a quote <Arrow />
+          </a>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-main">
+        <div class="footer-about">
+          <a class="wordmark" href="/">
+            <span>
+              UNIT ALFA<span class="brand-square"></span>
+            </span>
+          </a>
+          <p>
+            Pressed components. Fabricated assemblies.
+            <br />
+            Made in Bommasandra since 1991.
+          </p>
+          <span class="footer-gst">GSTIN {company.gstin}</span>
+        </div>
+        <div>
+          <h2>Explore</h2>
+          <ul>
+            {navigation.map((item) => (
+              <li>
+                <a href={item.href}>{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h2>Speak to Unit Alfa</h2>
+          <a class="footer-phone" href={company.phoneHref}>
+            {company.phone}
+          </a>
+          <a href={`mailto:${company.email}`}>{company.email}</a>
+          <p>
+            No. 15, 1st Cross, KIADB Industrial Area,
+            <br />
+            Bommasandra 4th Phase,
+            <br />
+            Bengaluru, Karnataka 560099.
+          </p>
+          <a class="text-link light-link" href={company.maps} target="_blank" rel="noreferrer">
+            Get directions <Arrow diagonal />
+          </a>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© {new Date().getFullYear()} UNIT ALFA</span>
+        <div>
+          <a href="/privacy/">Privacy</a>
+          <a href="/terms/">Website terms</a>
+        </div>
+        <span>BUILT AROUND YOUR PART.</span>
+      </div>
+    </footer>
+    <a class="mobile-enquiry button" href="/enquiry/">
+      Request a quote <Arrow />
+    </a>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+      const nav = document.querySelector<HTMLElement>('#main-nav');
+      toggle?.addEventListener('click', () => {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+        toggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
+        nav?.classList.toggle('is-open', !isOpen);
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') {
+          toggle.click();
+          toggle.focus();
+        }
+      });
+      if (
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        'IntersectionObserver' in window
+      ) {
+        const observer = new IntersectionObserver(
+          (entries) =>
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                observer.unobserve(entry.target);
+              }
+            }),
+          { threshold: 0.08 },
+        );
+        document.querySelectorAll('[data-reveal]').forEach((el) => {
+          el.classList.add('reveal-ready');
+          observer.observe(el);
+        });
+      }
+    </script>
+  </body>
+</html>
