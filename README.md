@@ -46,7 +46,7 @@ Intro logic lives in `Layout.astro`; page motion is in `src/scripts/motion.ts` a
 
 ## Contact values and missing information
 
-The user authorised reuse of the existing website. Phone **+91 87929 04185**, email **enquiry@unitalfa.com**, address, GSTIN and Google map are carried over from that baseline. `[PHONE]`, `[EMAIL]` and `[MAP_EMBED]` are therefore replaced with real existing-site values. Their operational receipt/last-mile accuracy has not been independently tested.
+The primary enquiry contact is **Jaisurya Govindan, General Manager**, phone **+91 94806 16429**, email **gmo@unitalfa.co.in**, as supplied for the replacement website. These details appear on Contact, Enquiry and the shared footer; phone/email links, RFQ drafts and structured data use the same central record in `src/data/company.ts`. The proprietor remains Sashidhar K. G.; the enquiry contact is a separate role. Address, GSTIN and Google map are carried over from the existing website. Phone/email receipt and the map's last-mile accuracy have not been independently tested.
 
 `[WORKING_HOURS]` is the only remaining data placeholder, in `company.ts`. It is deliberately not printed as a claim or placed in structured data; Contact says to call ahead. To publish actual hours, replace that field and add the confirmed schedule to the Contact page and, if useful, JSON-LD.
 

@@ -1,11 +1,16 @@
+const phoneNumber = '+919480616429';
+
 export const company = {
   name: 'UNIT ALFA',
   proprietor: 'Sashidhar K. G.',
   legalName: 'Sashidhar Govindarajulu Kannaiah',
   founded: '1991',
-  phone: '+91 87929 04185',
-  phoneHref: 'tel:+918792904185',
-  email: 'enquiry@unitalfa.com',
+  contactName: 'Jaisurya Govindan',
+  contactRole: 'General Manager',
+  phone: '+91 94806 16429',
+  phoneNumber,
+  phoneHref: `tel:${phoneNumber}`,
+  email: 'gmo@unitalfa.co.in',
   address:
     'No. 15, 1st Cross, KIADB Industrial Area, Bommasandra 4th Phase, Bengaluru, Karnataka 560099',
   gstin: '29ACLPS6365B1Z8',

@@ -43,3 +43,7 @@ Live Vercel routing, deployment access, browser interaction/accessibility, email
 ### GitHub verification
 
 The implementation was pushed to `sushanthaaa/Unit-Alfa`, branch `main`, at commit `d73806b1648f36cee3914c885302c40bf78f1fa3`; the remote SHA matched the local revision. [The first GitHub Actions run](https://github.com/sushanthaaa/Unit-Alfa/actions/runs/35606593340) passed on Ubuntu, independently repeating clean installation, formatting, all nine tests and the audited preview build. Later documentation-only commits retain those checks in CI.
+
+## Contact revision
+
+The enquiry contact was updated to Jaisurya Govindan, General Manager, +91 94806 16429, gmo@unitalfa.co.in. Formatting, Astro/TypeScript (zero errors/warnings/hints), build and static audits passed. All nine generated pages were checked for the new phone/email links, contact name/role and structured data; the RFQ action and draft recipient use the new email. Previous phone/email values are absent from generated pages. The historical research remains unchanged, and no email or phone call was sent as part of verification.

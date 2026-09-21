@@ -32,6 +32,14 @@ import { company } from '../data/company';
       </a>
       <dl>
         <div>
+          <dt>Contact</dt>
+          <dd>
+            <strong>{company.contactName}</strong>
+            <br />
+            {company.contactRole}
+          </dd>
+        </div>
+        <div>
           <dt>Phone</dt>
           <dd>
             <a href={company.phoneHref}>{company.phone}</a>

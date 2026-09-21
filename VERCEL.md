@@ -12,7 +12,7 @@ The first deployment from `main` is called Production by Vercel even during clie
 
 ## Review acceptance
 
-- Confirm the carried-over phone, email, map entrance, working hours, plant figures and certification wording with the client. The source claims are qualified and the original company logo is preserved.
+- Confirm the current enquiry contact, phone, email, map entrance, working hours, plant figures and certification wording with the client. The source claims are qualified and the original company logo is preserved.
 - Review Home, About, Capabilities, Products, Quality, Enquiry, Contact, Privacy and Terms on phone and desktop. Check keyboard navigation, the product lightbox and reduced-motion preference.
 - The enquiry form prepares an **unsent email draft**. Drawings are attached in the buyer's email app. It is not a hosted upload or automatic email service; approve that workflow before launch.
 - Check `/about-unit-alfa/`, `/unit-alfa-company-profile/`, `/unit-alfa-services/` and `/contact-unit-alfa/` redirect to their replacements. Vercel's `permanent` redirects use HTTP 308. Astro also emits static fallbacks for other hosts.

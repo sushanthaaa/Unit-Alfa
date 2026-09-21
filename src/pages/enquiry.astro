@@ -30,6 +30,11 @@ import { company } from '../data/company';
       </ol>
       <div class="contact-note">
         <p>Prefer a conversation?</p>
+        <p>
+          <strong>{company.contactName}</strong>
+          <br />
+          {company.contactRole}
+        </p>
         <a href={company.phoneHref}>{company.phone}</a>
         <a href={`mailto:${company.email}`}>{company.email}</a>
       </div>

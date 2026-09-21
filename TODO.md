@@ -120,3 +120,11 @@ These do not conceal placeholders or simulated submission in the delivered site.
 - [x] Confirm the first GitHub Actions run passes (Linux runner: clean install, formatting, nine tests and audited build).
 - [ ] Import the repository into Vercel and verify the generated review deployment.
 - [ ] Share a client-accessible Vercel review link and obtain approval before company-domain cutover.
+
+## Contact revision
+
+- [x] Set Jaisurya Govindan, General Manager, as the enquiry contact.
+- [x] Update the shared phone to +91 94806 16429 and email to gmo@unitalfa.co.in.
+- [x] Show the contact name/role on Contact, Enquiry and the footer; use shared details for all contact links, RFQ destinations and structured data.
+- [x] Preserve the separate proprietor details and the archived research record.
+- [x] Pass formatting, Astro/TypeScript build, static audit and generated-page checks for the new contact details and RFQ recipient.

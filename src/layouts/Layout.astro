@@ -30,8 +30,15 @@ const business = {
   foundingDate: company.founded,
   description:
     'Manufacturer of sheet-metal pressed and fabricated components for hydraulic excavators and industrial applications in Bommasandra, Bengaluru.',
-  telephone: '+918792904185',
+  telephone: company.phoneNumber,
   email: company.email,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    name: company.contactName,
+    contactType: company.contactRole,
+    telephone: company.phoneNumber,
+    email: company.email,
+  },
   identifier: { '@type': 'PropertyValue', propertyID: 'GSTIN', value: company.gstin },
   address: {
     '@type': 'PostalAddress',
@@ -189,6 +196,11 @@ const business = {
         </div>
         <div class="footer-contact">
           <h2>Speak to Unit Alfa</h2>
+          <p>
+            <strong>{company.contactName}</strong>
+            <br />
+            {company.contactRole}
+          </p>
           <a class="footer-phone" href={company.phoneHref}>
             {company.phone}
           </a>
