@@ -35,6 +35,11 @@ The initial replacement and the original-logo/motion revision were published to 
 - Preview output uses the review origin and remains non-indexable even with an inherited production indexing flag. Approved-domain production output uses the company origin and allows indexing only with explicit opt-in.
 - The output audit checks all nine page routes, canonical and Open Graph origins, metadata, indexing, local links/anchors/assets, image dimensions, form labels, JSON-LD, robots, sitemap and redirect fallbacks.
 - Git-tracked content excludes dependencies, build output, local environment files and Vercel project state. A common-secret pattern scan of working files and the existing two-commit history found no matches. This is not a comprehensive security audit.
+- The configured Vercel fields match their current published JSON-schema definitions. The unused experimental function-trigger portions of the upstream schema were excluded because they mix schema draft syntax.
 - Original logo, photography, layout, motion and browser interactions are unchanged in this handoff.
 
 Live Vercel routing, deployment access, browser interaction/accessibility, email receipt and company-domain DNS remain to be verified after import. See VERCEL.md and TODO.md.
+
+### GitHub verification
+
+The implementation was pushed to `sushanthaaa/Unit-Alfa`, branch `main`, at commit `d73806b1648f36cee3914c885302c40bf78f1fa3`; the remote SHA matched the local revision. [The first GitHub Actions run](https://github.com/sushanthaaa/Unit-Alfa/actions/runs/35606593340) passed on Ubuntu, independently repeating clean installation, formatting, all nine tests and the audited preview build. Later documentation-only commits retain those checks in CI.

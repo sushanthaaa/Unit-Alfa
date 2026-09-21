@@ -116,7 +116,7 @@ These do not conceal placeholders or simulated submission in the delivered site.
 - [x] Add contribution conventions, editor settings and Vercel import/launch documentation.
 - [x] Include archived research, asset provenance and third-party license notices in the repository.
 - [x] Complete clean-install, formatting, test, build, dependency and repository-hygiene checks.
-- [ ] Push the validated source to `sushanthaaa/Unit-Alfa` on `main` and verify the remote revision.
-- [ ] Confirm the first GitHub Actions run passes.
+- [x] Push the validated source to `sushanthaaa/Unit-Alfa` on `main` and verify the remote revision.
+- [x] Confirm the first GitHub Actions run passes (Linux runner: clean install, formatting, nine tests and audited build).
 - [ ] Import the repository into Vercel and verify the generated review deployment.
 - [ ] Share a client-accessible Vercel review link and obtain approval before company-domain cutover.
