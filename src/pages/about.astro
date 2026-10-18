@@ -8,116 +8,115 @@ import { company } from '../data/company';
 
 <Layout
   title="About Unit Alfa — Bommasandra Manufacturer Since 1991"
-  description="Established in 1991, Unit Alfa is a proprietorship manufacturing sheet-metal pressed parts and fabricated assemblies in Bommasandra, Bengaluru."
+  description="Established in 1991, Unit Alfa manufactures light and medium pressed components and fabricated assemblies for off-highway equipment in Bengaluru."
 >
   <PageIntro
-    label="ABOUT UNIT ALFA"
-    title="A PRESS SHOP. A FABRICATION PARTNER."
-    intro="Manufacturing sheet-metal components for hydraulic excavators, automotive and industrial applications. Established in 1991. Based in Bommasandra."
+    label="ABOUT / UNIT ALFA"
+    title="BOMMASANDRA ROOTS. MANUFACTURING SINCE 1991."
+    intro="A manufacturer of pressed components and fabricated assemblies, with a focus on hydraulic excavators and the off-highway industry."
   />
   <section class="container about-story section-bottom">
     <figure class="about-photo" data-reveal>
       <img
-        src="/images/unit-alfa-entrance.webp"
-        alt="Unit Alfa’s published factory entrance with the company sign and yellow gate."
-        width="640"
-        height="320"
+        src="/images/profile-factory-profile.webp"
+        srcset="/images/profile-factory-profile-640.webp 640w, /images/profile-factory-profile.webp 1157w"
+        sizes="(max-width: 800px) 90vw, 45vw"
+        width="1157"
+        height="1592"
+        alt="Blue-clad Unit Alfa premises with trees and a yellow entrance gate in Bommasandra."
         fetchpriority="high"
       />
-      <figcaption>The published Unit Alfa entrance photograph, Bommasandra.</figcaption>
-      <div class="origin-block">
-        <strong>1991</strong>
-        <span>
-          THE YEAR
-          <br />
-          WE STARTED
-        </span>
-      </div>
+      <figcaption>Our premises · company-supplied profile</figcaption>
     </figure>
-    <div class="prose" data-reveal>
-      <p class="eyebrow">A PRACTICAL MANUFACTURING BASE</p>
+    <div data-reveal>
+      <p class="eyebrow">THE COMPANY</p>
       <h2>
-        SMALL PARTS.
+        BUILT AROUND
         <br />
-        REAL RESPONSIBILITY.
+        COMPONENT WORK.
       </h2>
       <p>
-        A bracket, an enclosure or a pressed spacer has a job to do in a larger assembly. Its
-        material, geometry and fit belong at the centre of the conversation.
+        Unit Alfa was established in 1991. Our work covers light and medium press components,
+        machining, fabrication and assemblies for off-highway equipment.
       </p>
       <p>
-        Unit Alfa’s published range covers battery boxes, grease baths, shims, spacers, seat
-        adjusters, cylinder mounting brackets and other industrial components. The business combines
-        press work and fabrication with tooling, machining and assembly support.
+        We design and manufacture tools, fixtures and jigs, bringing development and production
+        requirements into the same conversation. Assembly and painting support the supply of
+        finished components.
       </p>
       <p>
-        Operating from Bommasandra’s industrial belt, Unit Alfa is led by proprietor{' '}
-        <strong>{company.proprietor}</strong>.
+        High variety and low quantities are part of our work. We welcome recurring requirements
+        where several different components need to be manufactured and supplied over time.
       </p>
-      <a class="text-link" href="/products/">
-        See the component range <Arrow />
-      </a>
-    </div>
-  </section>
-  <section class="facts-section">
-    <div class="container">
-      <p class="eyebrow">COMPANY PARTICULARS</p>
       <dl class="company-facts">
-        <div>
-          <dt>Trade name</dt>
-          <dd>UNIT ALFA</dd>
-        </div>
         <div>
           <dt>Established</dt>
           <dd>1991</dd>
         </div>
         <div>
-          <dt>Business</dt>
-          <dd>Sheet-metal pressed & fabricated components</dd>
+          <dt>Covered premises</dt>
+          <dd>16,600 sq ft · own premises</dd>
         </div>
         <div>
           <dt>Proprietor</dt>
-          <dd>
-            {company.proprietor}
-            <small>Legal name: {company.legalName}</small>
-          </dd>
+          <dd>{company.proprietor}</dd>
+        </div>
+        <div>
+          <dt>Location</dt>
+          <dd>Bommasandra 4th Phase, Bengaluru</dd>
         </div>
         <div>
           <dt>GSTIN</dt>
           <dd>{company.gstin}</dd>
         </div>
-        <div>
-          <dt>Manufacturing location</dt>
-          <dd>Bommasandra 4th Phase, Bengaluru</dd>
-        </div>
       </dl>
     </div>
   </section>
-  <section class="section container floor-story">
-    <div data-reveal>
-      <p class="eyebrow">THE PUBLISHED PLANT PROFILE</p>
+  <section class="dark-section">
+    <div class="container split-section">
+      <div>
+        <p class="eyebrow">CUSTOMER RELATIONSHIPS</p>
+        <h2>
+          PART OF THE
+          <br />
+          OFF-HIGHWAY SUPPLY CHAIN.
+        </h2>
+        <p>
+          Our main customers include Kobelco and Komatsu. The work spans individual pressed parts
+          and assemblies used in hydraulic excavators.
+        </p>
+      </div>
+      <div class="customer-names">
+        <span>KOBELCO</span>
+        <span>KOMATSU</span>
+        <p>Customer references provided by Unit Alfa.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section container split-section">
+    <div>
+      <p class="eyebrow">DEVELOPMENT EXPERIENCE</p>
       <h2>
-        ROOM TO
-        <br />
-        MAKE THINGS.
+        MANY PARTS.
+        <br />A PRACTICAL APPROACH.
       </h2>
       <p>
-        The company profile lists approximately 6,000 sq ft of shop floor and 4,000 sq ft of open
-        area. For current capacity, layout or a plant visit, speak with Unit Alfa.
+        The company profile records more than 800 parts developed for different customers over time.
+        Each new requirement starts with the drawing, material and application.
       </p>
-      <a class="text-link" href="/capabilities/">
-        Plant & machinery <Arrow />
+      <a class="text-link" href="/how-we-work/">
+        From requirement to production <Arrow />
       </a>
     </div>
-    <figure data-reveal>
+    <figure>
       <img
-        src="/images/published-factory-interior.webp"
-        width="680"
-        height="510"
+        src="/images/profile-component-range.webp"
+        width="892"
+        height="669"
+        alt="A selection of Unit Alfa manufactured components arranged on a wooden display."
         loading="lazy"
-        alt="Unit Alfa company-published infrastructure photograph with overhead gantry and workshop equipment."
       />
-      <figcaption>Infrastructure photograph from Unit Alfa’s existing website.</figcaption>
+      <figcaption>Examples of component development · company profile</figcaption>
     </figure>
   </section>
   <QuoteBand />

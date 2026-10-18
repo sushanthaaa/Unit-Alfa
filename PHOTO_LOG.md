@@ -1,155 +1,119 @@
-# UNIT ALFA — deployed photo log
+# UNIT ALFA — current asset and photo log
 
-Updated 21 September 2026. Real company assets are reused from the existing website at the user’s instruction. All generated images are generic illustrations, visibly labelled, and never presented as company production samples. No competitor photos or unverified OEM logos are used.
+Updated 19 October 2026. **Every deployed photograph is real.** No generated component illustration is used in this revision. The new logo and profile were supplied by the user for the replacement website. The full PDF, internal software screens and customer drawings are not shipped.
 
-The deployed images are all included under `public/images/`. References below to `../photos/` identify the separate research archive, which is not part of this Git repository or required for installation. Public source URLs are retained for provenance.
+## Company-profile photographs
 
-## Real photographs
+Source for each asset below: user-supplied `UNIT ALFA PROFILE_02052026.pdf`, with its PDF page number (one-based). There is no public URL for this supplied document. Originals were extracted without recreating the object. Web derivatives use orientation correction where required, downsampling and WebP compression only; no generative retouching, added logos or replacement backgrounds. Available 640-pixel variants depict exactly the same image and use the same alt description.
 
-### UA-11 — battery-box.webp
+### profile-battery-box
 
-- Source image: [UA-11 original](https://www.unitalfa.in/wp-content/uploads/2024/05/BATTERY-BOX.jpg).
-- Source page: [Source: Unit Alfa corporate website](https://www.unitalfa.in/).
-- Page used: Home, Products.
-- Alt text: Open metal battery enclosure with a raised yellow lid and vented silver body.
-- Derivative: 345 × 260 WebP, 6,552 bytes; quality 84, no enlargement. Original retained in ../photos/battery-box.jpg.
-- Treatment: format compression only; no generated content, background replacement or colour manipulation.
-- Credit: Source: Unit Alfa corporate website.
+- Source: supplied profile, page 22.
+- Deployed files: `profile-battery-box.webp` and `profile-battery-box-640.webp`, under `public/images/`.
+- Main derivative: 892 × 669 pixels, 27,326 bytes.
+- Page use: Home, catalogue, battery-box detail, shared Open Graph; related-product links may reuse the same photograph.
+- Alt description: Unit Alfa battery enclosure with a hinged yellow lid, formed body and ventilation slots.
 
-### UA-12 — seat-adjuster.webp
+### profile-grease-bath
 
-- Source image: [UA-12 original](https://www.unitalfa.in/wp-content/uploads/2024/05/SEAT-ADJUSTER.jpg).
-- Source page: [Source: Unit Alfa corporate website](https://www.unitalfa.in/).
-- Page used: Home, Products.
-- Alt text: Black seat-adjuster mechanism shown from two angles.
-- Derivative: 345 × 260 WebP, 6,768 bytes; quality 84, no enlargement. Original retained in ../photos/seat-adjuster.jpg.
-- Treatment: format compression only; no generated content, background replacement or colour manipulation.
-- Credit: Source: Unit Alfa corporate website.
+- Source: supplied profile, page 23.
+- Deployed files: `profile-grease-bath.webp` and `profile-grease-bath-640.webp`, under `public/images/`.
+- Main derivative: 999 × 589 pixels, 38,588 bytes.
+- Page use: Home, catalogue, grease-bath detail; related-product links may reuse the same photograph.
+- Alt description: Unpainted circular grease-bath component photographed in the Unit Alfa company profile.
 
-### UA-13 — lamp-guard-cover.webp
+### profile-seat-adjuster
 
-- Source image: [UA-13 original](https://www.unitalfa.in/wp-content/uploads/2024/05/LAMP-GUARD-COVER.jpg).
-- Source page: [Source: Unit Alfa corporate website](https://www.unitalfa.in/).
-- Page used: Products.
-- Alt text: Dark metal lamp guard and cover with yellow mounting details.
-- Derivative: 345 × 260 WebP, 4,016 bytes; quality 84, no enlargement. Original retained in ../photos/lamp-guard-cover.jpg.
-- Treatment: format compression only; no generated content, background replacement or colour manipulation.
-- Credit: Source: Unit Alfa corporate website.
+- Source: supplied profile, page 25.
+- Deployed files: `profile-seat-adjuster.webp` and `profile-seat-adjuster-640.webp`, under `public/images/`.
+- Main derivative: 935 × 526 pixels, 26,248 bytes.
+- Page use: Home, catalogue, seat-adjuster detail; related-product links may reuse the same photograph.
+- Alt description: Black Unit Alfa seat-adjuster assembly with slide rails and an adjustment lever.
 
-### UA-14 — muffler.webp
+### profile-muffler
 
-- Source image: [UA-14 original](https://www.unitalfa.in/wp-content/uploads/2024/05/MUFFLER.jpg).
-- Source page: [Source: Unit Alfa corporate website](https://www.unitalfa.in/).
-- Page used: Products.
-- Alt text: Silver cylindrical muffler with upright outlet pipe.
-- Derivative: 345 × 260 WebP, 5,110 bytes; quality 84, no enlargement. Original retained in ../photos/muffler.jpg.
-- Treatment: format compression only; no generated content, background replacement or colour manipulation.
-- Credit: Source: Unit Alfa corporate website.
+- Source: supplied profile, page 26.
+- Deployed files: `profile-muffler.webp` and `profile-muffler-640.webp`, under `public/images/`.
+- Main derivative: 1024 × 1170 pixels, 115,952 bytes.
+- Page use: Home, catalogue, muffler detail; related-product links may reuse the same photograph.
+- Alt description: Manufactured Unit Alfa muffler with a cylindrical body and upright exhaust outlet.
 
-### UA-15 — grease-bath.webp
+### profile-cabin-joint
 
-- Source image: [UA-15 original](https://www.unitalfa.in/wp-content/uploads/2024/05/GREASE-BATH.jpg).
-- Source page: [Source: Unit Alfa corporate website](https://www.unitalfa.in/).
-- Page used: Home, Products.
-- Alt text: Round formed metal grease-bath components, one yellow and one unpainted.
-- Derivative: 345 × 260 WebP, 5,212 bytes; quality 84, no enlargement. Original retained in ../photos/grease-bath.jpg.
-- Treatment: format compression only; no generated content, background replacement or colour manipulation.
-- Credit: Source: Unit Alfa corporate website.
+- Source: supplied profile, page 21.
+- Deployed files: `profile-cabin-joint.webp`, under `public/images/`.
+- Main derivative: 513 × 514 pixels, 17,434 bytes.
+- Page use: Catalogue, cabin-joint detail; related-product links may reuse the same photograph.
+- Alt description: Curved formed cabin-joint component from Unit Alfa’s company profile.
 
-### UA-16 — cabin-joint.webp
+### profile-lamp-guard-cover
 
-- Source image: [UA-16 original](https://www.unitalfa.in/wp-content/uploads/2024/05/CABIN-JOINT.jpg).
-- Source page: [Source: Unit Alfa corporate website](https://www.unitalfa.in/).
-- Page used: Products.
-- Alt text: Two formed metal cabin-joint components on a grey background.
-- Derivative: 345 × 260 WebP, 6,196 bytes; quality 84, no enlargement. Original retained in ../photos/cabin-joint.jpg.
-- Treatment: format compression only; no generated content, background replacement or colour manipulation.
-- Credit: Source: Unit Alfa corporate website.
+- Source: supplied profile, page 24.
+- Deployed files: `profile-lamp-guard-cover.webp` and `profile-lamp-guard-cover-640.webp`, under `public/images/`.
+- Main derivative: 892 × 669 pixels, 48,480 bytes.
+- Page use: Catalogue, lamp-guard detail; related-product links may reuse the same photograph.
+- Alt description: Fabricated lamp guard and metal cover among Unit Alfa component examples.
 
-### UA-27 — published-factory-interior.webp
+### profile-component-range
 
-- Source image: [UA-27 original](https://www.unitalfa.in/wp-content/uploads/2024/05/IMG_20181027_111040.jpg).
-- Source page: [Source: Unit Alfa corporate website](https://www.unitalfa.in/about-unit-alfa/).
-- Page used: Home, About, Capabilities.
-- Alt text: Workshop interior with yellow overhead gantry crane marked SWL 2500 KGs, yellow storage racks and turquoise machine guards.
-- Derivative: 680 × 510 WebP, 67,268 bytes; quality 84, no enlargement. Original retained in ../photos/published-factory-interior.jpg.
-- Treatment: format compression only; no generated content, background replacement or colour manipulation.
-- Credit: Source: Unit Alfa corporate website.
+- Source: supplied profile, page 19.
+- Deployed files: `profile-component-range.webp` and `profile-component-range-640.webp`, under `public/images/`.
+- Main derivative: 892 × 669 pixels, 39,858 bytes.
+- Page use: About; related-product links may reuse the same photograph.
+- Alt description: A selection of Unit Alfa manufactured components arranged on a wooden display.
 
-### UA-31 — unit-alfa-entrance.webp
+### profile-small-components
 
-- Source image: [UA-31 original](https://www.unitalfa.in/wp-content/uploads/elementor/thumbs/IMG_20180124_084927-q8btbk4q3mnzgm1feuzjahrk9wqqh8j4mfw6kt0cjk.jpg).
-- Source page: [Source: Unit Alfa corporate website](https://www.unitalfa.in/contact-unit-alfa/).
-- Page used: Home, About, Contact.
-- Alt text: Unit Alfa entrance with yellow metal gate and a green Unit Alfa sign beside the doorway.
-- Derivative: 640 × 320 WebP, 34,054 bytes; quality 84, no enlargement. Original retained in ../photos/unit-alfa-entrance.jpg.
-- Treatment: format compression only; no generated content, background replacement or colour manipulation.
-- Credit: Source: Unit Alfa corporate website.
+- Source: supplied profile, page 20.
+- Deployed files: `profile-small-components.webp` and `profile-small-components-640.webp`, under `public/images/`.
+- Main derivative: 892 × 669 pixels, 35,038 bytes.
+- Page use: Capabilities; related-product links may reuse the same photograph.
+- Alt description: A variety of small manufactured metal parts photographed for Unit Alfa’s profile.
 
-### UA-40 — weldtable-assembly.webp
+### profile-packing-check
 
-- Source image: [UA-40 original](https://www.weldtables.in/wp-content/uploads/2024/05/6.jpg).
-- Source page: [Source: Unit Alfa / Weldtables.in](https://www.weldtables.in/).
-- Page used: Capabilities.
-- Alt text: Worker holding a perforated welding-table module with Weldtables.in branding.
-- Derivative: 720 × 720 WebP, 44,004 bytes; quality 84, no enlargement. Original retained in ../photos/weldtable-assembly.jpg.
-- Treatment: format compression only; no generated content, background replacement or colour manipulation.
-- Credit: Source: Unit Alfa / Weldtables.in.
+- Source: supplied profile, page 11.
+- Deployed files: `profile-packing-check.webp` and `profile-packing-check-640.webp`, under `public/images/`.
+- Main derivative: 1440 × 908 pixels, 130,460 bytes.
+- Page use: How We Work, green indicator; related-product links may reuse the same photograph.
+- Alt description: Unit Alfa packing station with a box, weighing scale and green indicator illuminated.
 
-### UA-42 — weldtable-ribs.webp
+### profile-packing-check-alert
 
-- Source image: [UA-42 original](https://www.weldtables.in/wp-content/uploads/2024/05/4-1.jpg).
-- Source page: [Source: Unit Alfa / Weldtables.in](https://www.weldtables.in/).
-- Page used: Products — custom fabrication / tooling.
-- Alt text: Gloved hands fitting internal cross ribs inside a modular welding table.
-- Derivative: 720 × 720 WebP, 40,902 bytes; quality 84, no enlargement. Original retained in ../photos/weldtable-ribs.jpg.
-- Treatment: format compression only; no generated content, background replacement or colour manipulation.
-- Credit: Source: Unit Alfa / Weldtables.in.
+- Source: supplied profile, page 14.
+- Deployed files: `profile-packing-check-alert.webp` and `profile-packing-check-alert-640.webp`, under `public/images/`.
+- Main derivative: 1440 × 925 pixels, 145,928 bytes.
+- Page use: How We Work, red indicator; related-product links may reuse the same photograph.
+- Alt description: Unit Alfa packing station with a box, weighing scale and red indicator illuminated.
 
-## Generated component illustrations
+### profile-factory-profile
 
-These fill the three catalogue gaps where usable company photographs were not found. Each received one generation request. They illustrate a category, not dimensions, manufacturing approval or an actual Unit Alfa part. Full prompts: `generated-image-prompts.json`.
+- Source: supplied profile, page 4.
+- Deployed files: `profile-factory-profile.webp` and `profile-factory-profile-640.webp`, under `public/images/`.
+- Main derivative: 1157 × 1592 pixels, 322,920 bytes.
+- Page use: About; related-product links may reuse the same photograph.
+- Alt description: Blue-clad Unit Alfa premises with trees and a yellow entrance gate in Bommasandra.
 
-### GEN-01 — cylinder-mounting-bracket-illustrative.webp
+## Continuing public-company photographs
 
-- Source: generated using built-in image_gen.
-- Page used: Products.
-- Visible caption: Illustrative example · generated.
-- Alt text: Generated illustrative steel cylinder mounting bracket; not a photograph of a Unit Alfa component.
-- Derivative: 720 × 540 WebP, 57,776 bytes; quality 83.
-- Original: cylinder-mounting-bracket-illustrative.png, retained in ../photos/generated/.
-- Treatment: resizing and WebP compression only.
+| Deployed file                     | Public source                                                                                                                                                                                          | Page use                                | Alt description                                                                    |
+| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------- | ---------------------------------------------------------------------------------- |
+| `published-factory-interior.webp` | [Original](https://www.unitalfa.in/wp-content/uploads/2024/05/IMG_20181027_111040.jpg), [company page](https://www.unitalfa.in/about-unit-alfa/)                                                       | Home                                    | Unit Alfa’s published shop-floor photograph with an overhead gantry and equipment. |
+| `unit-alfa-entrance.webp`         | [Original](https://www.unitalfa.in/wp-content/uploads/elementor/thumbs/IMG_20180124_084927-q8btbk4q3mnzgm1feuzjahrk9wqqh8j4mfw6kt0cjk.jpg), [company page](https://www.unitalfa.in/contact-unit-alfa/) | Contact                                 | Existing Unit Alfa entrance and yellow gate.                                       |
+| `weldtable-assembly.webp`         | [Original](https://www.weldtables.in/wp-content/uploads/2024/05/6.jpg), [Weldtables](https://www.weldtables.in/)                                                                                       | Capabilities                            | Assembly of a modular welding table from Unit Alfa’s Weldtables range.             |
+| `weldtable-ribs.webp`             | [Original](https://www.weldtables.in/wp-content/uploads/2024/05/4-1.jpg), [Weldtables](https://www.weldtables.in/)                                                                                     | Tooling product, catalogue, How We Work | Gloved hands assembling the ribs of a Unit Alfa Weldtables modular welding table.  |
 
-### GEN-02 — shims-and-spacers-illustrative.webp
+These retain the existing WebP derivatives, without enlargement or generative alteration. Dimensions are 680 × 510, 640 × 320, 720 × 720 and 720 × 720 respectively. The September source record is retained in `docs/research/PHOTO_LOG_20260921.md` for history; its removed low-resolution product photos and generated illustrations are no longer deployed. Old generation prompts are archived in the same research folder and are not active assets.
 
-- Source: generated using built-in image_gen.
-- Page used: Products.
-- Visible caption: Illustrative example · generated.
-- Alt text: Generated illustrative flat steel shims and ring spacers; not Unit Alfa production samples.
-- Derivative: 720 × 540 WebP, 65,136 bytes; quality 83.
-- Original: shims-and-spacers-illustrative.png, retained in ../photos/generated/.
-- Treatment: resizing and WebP compression only.
+## New logo and favicon
 
-### GEN-03 — latch-assembly-illustrative.webp
-
-- Source: generated using built-in image_gen.
-- Page used: Products.
-- Visible caption: Illustrative example · generated.
-- Alt text: Generated illustrative steel over-centre latch; not a Unit Alfa production sample.
-- Derivative: 720 × 540 WebP, 63,102 bytes; quality 83.
-- Original: latch-assembly-illustrative.png, retained in ../photos/generated/.
-- Treatment: resizing and WebP compression only.
+- `assets/brand/unit-alfa-logo.png`: exact supplied `Outlook-s2hh1jw2.png`, 1584 × 734. Original purple artwork and opaque paper-colour background preserved. The deployed `public/images/unit-alfa-logo.webp` is a lossless derivative with identical decoded RGBA pixels, used in the header, footer, introduction and Organization metadata. Responsive `unit-alfa-logo-360.webp` and `unit-alfa-logo-640.webp` are downsampled, losslessly encoded versions of the same artwork; the browser selects an appropriate size. Alt: “Unit Alfa”; the decorative duplicate in the introduction has empty alt in an aria-hidden container.
+- `public/favicon.png`: reduced-size derivative of that same supplied logo, 128 pixels wide. No invented replacement mark.
+- `Arrow.astro`: functional code-authored navigation icon, not a photograph or product illustration.
 
 ## Video and map
 
-- Capabilities: [Unit Alfa excavator battery-box welding demonstration](https://www.youtube.com/watch?v=l7yseQ1enEg). Reviewed near 00:22 during research. Loads as a YouTube privacy-enhanced embed after user action. No still was extracted or used as a site photograph. No claim that footage establishes current in-house robot capacity.
-- Contact: existing company Google map is loaded on request. No map screenshot or invented coordinates.
+- [Company battery-box welding video](https://www.youtube.com/watch?v=l7yseQ1enEg): click-to-load privacy-enhanced YouTube embed on Capabilities. No uncredited video frame is used as a photo.
+- Contact retains the existing company-linked map, loaded only after user action; no map screenshot or invented factory coordinates.
 
-## Non-photographic assets and exclusions
-
-- `public/favicon.svg`: simple code-authored UA initial mark; functional site identity, not a certificate or affiliation.
-- `public/images/unit-alfa-logo.png`: original Unit Alfa script logo, byte-for-byte copy of [the existing-site PNG](https://www.unitalfa.in/wp-content/uploads/2024/05/Unit-Alfa-1.png). 944 × 382, 224,860 bytes. Used in every page’s header and footer, the first-homepage-visit loader, and Organization JSON-LD. Header/footer alt: “Unit Alfa”; the duplicate decorative loader image has empty alt inside an aria-hidden container. No recolouring, tracing, generative editing, cropping or resampling; a CSS paper-colour ground keeps the original black artwork readable. Original research ID: UA-00.
-- `Arrow.astro` is a functional SVG navigation icon. No decorative industrial imagery was constructed from CSS or SVG.
-- The three unselected Weldtables photos, other corporate stock-like images and six video title thumbnails remain in the research inventory; they are not shipped in the site.
-
-Real photographs retain the respective owners’ copyright. Reuse for this replacement follows the user’s instruction; no open image license is asserted.
+Images and company marks retain the owners' rights. User-authorised reuse for this company website is not an open image licence or a claim that the source images are studio photography.

@@ -1,0 +1,50 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+---
+
+<Layout
+  title="Track Your Enquiry | Unit Alfa"
+  description="View the status and team updates for your Unit Alfa manufacturing enquiry using the private link in your acknowledgement email."
+  noindex
+>
+  <PageIntro
+    label="ENQUIRY STATUS"
+    title="KEEP THE DISCUSSION MOVING."
+    intro="Use the private link in your acknowledgement email to view the current enquiry status and updates from the team."
+  />
+  <section class="container section-bottom">
+    <div class="tracking-layout">
+      <div id="tracking-message" class="form-message" role="status">
+        Open your private status link to continue. A reference number on its own does not grant
+        access.
+      </div>
+      <section id="tracking-result" class="tracking-panel" hidden>
+        <div class="admin-topline">
+          <div>
+            <p class="eyebrow">YOUR ENQUIRY</p>
+            <h2 id="tracking-reference"></h2>
+          </div>
+          <button id="refresh-status" class="small-button" type="button">
+            Refresh status
+          </button>
+        </div>
+        <span id="tracking-status" class="status-badge"></span>
+        <p id="tracking-date" class="field-help"></p>
+        <ol id="tracking-events" class="timeline"></ol>
+      </section>
+      <p class="form-privacy">
+        This tracks the enquiry discussion. It is separate from internal production monitoring. For
+        additional drawings or a correction, email{' '}
+        <a href="mailto:gmo@unitalfa.co.in">gmo@unitalfa.co.in</a> with your reference.
+      </p>
+      <noscript>
+        <p>
+          JavaScript is needed to access the private status service. Contact the team with your
+          enquiry reference.
+        </p>
+      </noscript>
+    </div>
+  </section>
+  <script src="../scripts/tracking.ts"></script>
+</Layout>

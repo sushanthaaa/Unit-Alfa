@@ -4,53 +4,43 @@ import PageIntro from '../components/PageIntro.astro';
 import ProductCard from '../components/ProductCard.astro';
 import QuoteBand from '../components/QuoteBand.astro';
 import Lightbox from '../components/Lightbox.astro';
-import { products } from '../data/products';
-const categories = [
-  'All components',
-  'Fabricated assemblies',
-  'Pressed & small parts',
-  'Tooling & custom work',
-];
-const origin = Astro.site!;
+import Arrow from '../components/Arrow.astro';
+import { products, additionalComponents } from '../data/products';
+const categories = ['All components', ...new Set(products.map((p) => p.category))];
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
   itemListElement: products.map((p, i) => ({
     '@type': 'ListItem',
     position: i + 1,
-    item: {
-      '@type': 'Product',
-      name: p.name,
-      description: p.description,
-      url: new URL(`/products/#${p.id}`, origin).href,
-      manufacturer: { '@id': new URL('/#organization', origin).href },
-      ...(!p.generated ? { image: new URL(`/images/${p.image}.webp`, origin).href } : {}),
-    },
+    url: new URL(`/products/${p.id}/`, Astro.site).href,
+    name: p.name,
   })),
 };
 ---
 
 <Layout
-  title="Sheet-Metal Products — Battery Boxes, Brackets & Assemblies | Unit Alfa"
-  description="Explore Unit Alfa’s excavator battery boxes, grease baths, brackets, shims, spacers, seat adjusters, latch assemblies and custom fabrication in Bengaluru."
+  title="Excavator Components & Sheet-Metal Assemblies | Unit Alfa Bangalore"
+  description="Explore actual Unit Alfa battery boxes, mufflers, grease baths, seat adjusters, cabin joints, guards and tooling for off-highway equipment."
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(schema)}></script>
   <PageIntro
-    label="PRODUCTS & COMPONENTS"
-    title="MADE FOR THE ASSEMBLY."
-    intro="Pressed parts, fabricated enclosures and industrial assemblies. Start with a product family. Final material, dimensions, tolerances and batch requirements are agreed against your drawing."
+    label="PRODUCTS & ASSEMBLIES"
+    title="PARTS WITH A PLACE IN THE MACHINE."
+    intro="Real components from our manufacturing range. Explore an assembly, inspect the photograph and share your drawing for a technical review."
   />
   <section class="container section-bottom" aria-label="Component catalogue">
+    <h2 class="sr-only">Component catalogue</h2>
     <div class="catalogue-toolbar">
-      <div class="filter-group" role="group" aria-label="Filter product category">
-        {categories.map((category, i) => (
-          <button class="filter-button" data-filter={category} aria-pressed={i === 0}>
-            {category}
+      <div class="filter-group" role="group" aria-label="Filter component category">
+        {categories.map((c, i) => (
+          <button class="filter-button" data-filter={c} aria-pressed={i === 0}>
+            {c}
           </button>
         ))}
       </div>
       <p id="product-count" role="status">
-        10 component families
+        {products.length} product groups
       </p>
     </div>
     <div class="product-grid">
@@ -58,31 +48,54 @@ const schema = {
         <ProductCard product={product} />
       ))}
     </div>
-    <p class="catalogue-note">
-      Company catalogue photographs are retained at their original resolution. Generated
-      illustrations are labelled and show the component type only; they are not production samples
-      or dimensional references.
-    </p>
   </section>
-  <QuoteBand title="YOUR PART ISN’T HERE?\nSEND THE DRAWING." />
+  <section class="dark-section">
+    <div class="container range-overview">
+      <div data-reveal>
+        <p class="eyebrow">MORE FROM THE COMPONENT RANGE</p>
+        <h2>
+          SMALL PARTS.
+          <br />
+          SPECIFIC REQUIREMENTS.
+        </h2>
+        <p>
+          We also manufacture these components. Material, fit, finish and acceptance requirements
+          are reviewed against your drawing.
+        </p>
+        <a class="text-link light-link" href="/request-a-quote/">
+          Send your part requirement <Arrow />
+        </a>
+      </div>
+      <ul class="component-list">
+        {additionalComponents.map((p) => (
+          <li data-reveal>
+            {p}
+            <span aria-hidden="true">↗</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <QuoteBand />
   <Lightbox />
   <script>
     const filters = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
     const cards = document.querySelectorAll<HTMLElement>('.product-grid [data-category]');
     filters.forEach((button) =>
       button.addEventListener('click', () => {
-        const filter = button.dataset.filter;
         let count = 0;
         filters.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
         cards.forEach((card) => {
-          card.hidden = filter !== 'All components' && filter !== card.dataset.category;
+          card.hidden =
+            button.dataset.filter !== 'All components' &&
+            card.dataset.category !== button.dataset.filter;
           if (!card.hidden) {
             count++;
             card.classList.add('is-revealed');
           }
         });
         document.querySelector('#product-count')!.textContent =
-          `${count} component ${count === 1 ? 'family' : 'families'}`;
+          `${count} product ${count === 1 ? 'group' : 'groups'}`;
       }),
     );
   </script>

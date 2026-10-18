@@ -8,9 +8,11 @@ const { plate = false, priority = false } = Astro.props;
 
 <a class:list={['brand-logo', { 'brand-logo--plate': plate }]} href="/" aria-label="Unit Alfa home">
   <img
-    src="/images/unit-alfa-logo.png"
-    width="944"
-    height="382"
+    src="/images/unit-alfa-logo.webp"
+    srcset="/images/unit-alfa-logo-360.webp 360w, /images/unit-alfa-logo-640.webp 640w, /images/unit-alfa-logo.webp 1584w"
+    sizes="(max-width: 800px) 136px, 163px"
+    width="1584"
+    height="734"
     alt="Unit Alfa"
     fetchpriority={priority ? 'high' : 'auto'}
     decoding="async"

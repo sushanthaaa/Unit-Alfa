@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { statuses } from '../lib/rfq';
+---
+
+<Layout
+  title="Staff Enquiry Desk | Unit Alfa"
+  description="Authorised Unit Alfa staff access for reviewing manufacturing enquiries, private drawings and customer updates."
+  noindex
+>
+  <PageIntro
+    label="STAFF / ENQUIRY DESK"
+    title="THE ENQUIRY DESK."
+    intro="Review requirements, inspect drawings and keep customers informed. Access is limited to authorised staff."
+  />
+  <section class="container admin-shell">
+    <p id="admin-message" class="form-message" role="status">
+      Checking staff access…
+    </p>
+    <form id="admin-login" class="admin-login" hidden>
+      <div class="field">
+        <label for="staff-email">Staff email</label>
+        <input
+          id="staff-email"
+          name="email"
+          type="email"
+          required
+          autocomplete="username"
+          maxlength="254"
+        />
+      </div>
+      <div class="field">
+        <label for="staff-password">Password</label>
+        <input
+          id="staff-password"
+          name="password"
+          type="password"
+          required
+          autocomplete="current-password"
+          maxlength="256"
+        />
+      </div>
+      <button class="button button-dark" type="submit">
+        Sign in
+      </button>
+      <p class="form-privacy">
+        Staff accounts are provisioned by the company administrator. There is no public
+        registration.
+      </p>
+    </form>
+    <div id="admin-workspace" hidden>
+      <div class="admin-topline">
+        <p>
+          Signed in as <strong id="staff-name"></strong>
+        </p>
+        <button id="staff-logout" class="small-button" type="button">
+          Sign out
+        </button>
+      </div>
+      <form id="admin-filter" class="admin-toolbar">
+        <div class="field field-grow">
+          <label for="search-reference">Find a reference</label>
+          <input id="search-reference" name="q" maxlength="100" placeholder="UA-RFQ-…" />
+        </div>
+        <div class="field">
+          <label for="status-filter">Status</label>
+          <select id="status-filter" name="status">
+            <option>All</option>
+            {statuses.map((s) => (
+              <option>{s}</option>
+            ))}
+          </select>
+        </div>
+        <button class="button button-dark" type="submit">
+          Apply filters
+        </button>
+      </form>
+      <div class="table-scroll">
+        <table class="admin-table">
+          <caption id="admin-count">Enquiries</caption>
+          <thead>
+            <tr>
+              <th>Reference / company</th>
+              <th>Status</th>
+              <th>Owner</th>
+              <th>Updated</th>
+            </tr>
+          </thead>
+          <tbody id="admin-rows"></tbody>
+        </table>
+      </div>
+      <div class="admin-pagination">
+        <button id="previous-page" class="small-button" type="button">
+          Previous
+        </button>
+        <span id="page-count"></span>
+        <button id="next-page" class="small-button" type="button">
+          Next
+        </button>
+      </div>
+      <section
+        id="admin-detail"
+        class="admin-detail"
+        tabindex="-1"
+        hidden
+        aria-label="Selected enquiry"
+      ></section>
+    </div>
+    <noscript>
+      <p class="form-message">JavaScript is required for the staff enquiry desk.</p>
+    </noscript>
+  </section>
+  <script src="../scripts/admin.ts"></script>
+</Layout>

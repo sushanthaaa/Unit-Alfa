@@ -1,6 +1,6 @@
 {
   "name": "unit-alfa-website",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -10,7 +10,6 @@
   "scripts": {
     "dev": "astro dev --host 127.0.0.1 --port 4321",
     "build": "astro check && astro build && npm run audit:static",
-    "preview": "astro preview --host 127.0.0.1 --port 4321",
     "check": "astro check",
     "test": "node --test scripts/test-*.mjs",
     "audit:static": "node scripts/audit-static.mjs",
@@ -20,15 +19,24 @@
   "dependencies": {
     "@astrojs/check": "^0.9.10",
     "@astrojs/sitemap": "^3.7.4",
+    "@astrojs/vercel": "^11.0.15",
     "@fontsource/barlow-condensed": "^5.3.0",
     "@fontsource/source-sans-3": "^5.3.0",
+    "@supabase/supabase-js": "^2.118.0",
     "astro": "^7.3.3",
     "sharp": "^0.35.4",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.10",
     "parse5": "^8.0.1",
     "prettier": "^3.9.8",
     "prettier-plugin-astro": "^1.0.1"
+  },
+  "overrides": {
+    "@vercel/routing-utils": {
+      "path-to-regexp": "6.3.0"
+    }
   }
 }
