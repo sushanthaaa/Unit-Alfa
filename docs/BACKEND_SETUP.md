@@ -1,6 +1,6 @@
 # Supabase and Resend setup
 
-The implementation is ready for configuration; no company accounts, production credentials, sender DNS changes or live emails have been created by this change. Keep `RFQ_ENABLED=false` until the checklist is complete. Use separate test and production projects/keys. Account owners enter secrets directly in Vercel or a local ignored `.env`; do not paste them into chat or Git.
+The review environment was configured and tested on 19 October 2026; see [the live setup record](LIVE_SETUP_20261019.md) for completed checks and remaining production requirements. Keep production `RFQ_ENABLED=false` until its checklist is complete. Use separate test and production projects/keys. Enter secrets directly in Vercel or a local ignored `.env`; do not paste them into chat or Git.
 
 ## 1. Create the database and private storage
 
@@ -78,7 +78,7 @@ Use a synthetic company/contact and a harmless test drawing in the test project.
 7. Verify authenticated cron invocation, retry timing, provider logs and cleanup with disposable test records. Record the deployed URL, migration version and results in VALIDATION.md.
 8. Switch to the approved production configuration and verify with the company before opening real submissions and enabling search indexing.
 
-No live provider test was run during implementation because account configuration was not supplied.
+The initial implementation used controlled provider test doubles. Subsequent live preview results are recorded separately in [LIVE_SETUP_20261019.md](LIVE_SETUP_20261019.md); they do not establish production readiness.
 
 ## Staff operating guide
 

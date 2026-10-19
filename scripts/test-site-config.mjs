@@ -51,6 +51,21 @@ test('company-domain production requires explicit indexing opt-in', () => {
   );
 });
 
+test('approved Vercel launch host still requires production and explicit indexing opt-in', () => {
+  const env = { VERCEL_ENV: 'production', SITE_URL: 'https://unitalfa.vercel.app' };
+  assert.equal(resolveSiteConfig(env).indexable, false);
+  assert.equal(resolveSiteConfig({ ...env, SITE_INDEXABLE: 'true' }).indexable, true);
+  assert.deepEqual(
+    resolveSiteConfig({
+      ...env,
+      VERCEL_ENV: 'preview',
+      VERCEL_URL: 'unitalfa-review.vercel.app',
+      SITE_INDEXABLE: 'true',
+    }),
+    { siteUrl: 'https://unitalfa-review.vercel.app', indexable: false },
+  );
+});
+
 test('malformed, insecure and non-origin URLs fail the build instead of producing bad metadata', () => {
   for (const SITE_URL of [
     'not a URL',

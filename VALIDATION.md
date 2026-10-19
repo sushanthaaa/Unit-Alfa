@@ -4,7 +4,7 @@
 
 Node.js 24.19.0, npm 11.19.1, Astro 7.3.3, TypeScript 6 and the Astro Vercel adapter. Dependencies and the lockfile were updated with npm 11. The Vercel routing utility's transitive path-to-regexp is pinned to its patched 6.3.0 release through an npm override.
 
-- `npm test`: **36 tests passed**.
+- `npm test`: **37 tests passed**, including the approved Vercel launch-origin boundary added during setup.
 - PostgreSQL migration tests run against PGlite with stand-in Supabase Auth/Storage tables. They cover atomic request/event/outbox creation, duplicate submission, attachment ownership/completion/MIME/size, upload limits, staff membership, stale updates, public/internal message separation, non-overlapping mail claims, expired final attempts, RLS/grants, reference growth and safe retention claims.
 - API/service tests cover unavailable configuration, origin checks, body limits, anonymous/revoked staff access, signed tracking links, explicit customer response projection, email-provider failure, accepted provider IDs and idempotency headers. Provider HTTP calls are controlled test doubles; no real email or Supabase project is used.
 - Shared validation tests preserve manufacturing notation and annual quantities while rejecting malformed input, header injection, invalid files and duplicate attachment IDs. Deployment-policy tests cover local/review/production origins and indexing boundaries.
@@ -36,10 +36,12 @@ The CSS and motion code were inspected for reduced-motion overrides, native scro
 - Current facts and withheld specifications are documented in `docs/CONTENT_NOTES.md`; every asset is logged in PHOTO_LOG.md.
 - FLIS and packing are presented as operational following the user's latest confirmation. Website enquiry tracking makes no claim to integrate with FLIS.
 
-## Live activation still required
+## Subsequent live preview verification
 
-Supabase project provisioning, applying the migration, staff-account creation, signed-upload/download behaviour on the real storage service, Resend domain verification and actual inbox delivery have not been verified against company accounts. Neither credentials nor account configuration were supplied. Configure them using `docs/BACKEND_SETUP.md`, then complete its controlled test.
+After the user supplied signed-in provider sessions, Supabase and Resend were configured for the review branch. The live preview saved a two-part enquiry, uploaded/downloaded a private DXF, delivered staff/customer emails and a status update, and enforced staff revocation and tracking-token validation. A deliberate preview sender failure preserved a pending notification; restoring the sender and using staff retry delivered it. Internal notes stayed out of customer-visible content. See [the detailed setup record](docs/LIVE_SETUP_20261019.md) for scope, limitations and remaining production checks.
 
-Vercel platform routing/headers, production cookies, deployment protection, the five-minute retry schedule, provider connectivity and company-domain DNS/indexing need a deployed preview/production check. The daily cron in the committed review configuration is not the recommended production retry frequency. No new remote deployment, DNS cutover or client message is claimed by this record.
+A local production-mode build with `SITE_URL=https://unitalfa.vercel.app` and indexing explicitly enabled passed the 19-page audit. This only validates the build policy; it did not change the hosted environment or enable indexing. Preview policy remains independently covered by tests and CI.
+
+The company-controlled email-sending domain, five-minute scheduler, authenticated job/retention test and production credentials/acceptance remain outstanding. The existing `vercel.app` address does not provide DNS ownership for email verification. Indexing remains disabled and the review PR remains unmerged. No DNS cutover or client message was sent.
 
 Historical September checks, earlier GitHub work and the retired mail-draft workflow are archived in `docs/research/VALIDATION_20260921.md`; they do not validate this new backend.

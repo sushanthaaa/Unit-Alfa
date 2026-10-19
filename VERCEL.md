@@ -31,11 +31,13 @@ Functions have a configured maximum duration of 120 seconds. Files bypass Vercel
 - Confirm staff access revocation and that anonymous requests cannot retrieve drawings or dashboard data.
 - Keep review pages noindex. Check canonical and email status-link origins on the deployed runtime.
 
-## Company-domain launch
+## Approved website launch
+
+The user approved `https://unitalfa.vercel.app` on 19 October 2026. This is a Vercel-provided website address, not ownership of `vercel.app` or an email-sending domain. The current project has no custom domain. Keep indexing disabled until production enquiry testing and the launch checklist are complete. See [the live setup record](docs/LIVE_SETUP_20261019.md).
 
 1. Record existing DNS/hosting settings and keep a rollback path.
-2. Add the approved company domain in Vercel. Use the DNS records Vercel supplies and choose one canonical www/non-www origin.
-3. Set `SITE_URL=https://www.unitalfa.in` and `SITE_INDEXABLE=true` in **Production only**, after company approval. If the company chooses a different domain, intentionally update the allowed host list in `src/lib/site-config.ts` and its tests.
+2. For the approved Vercel address, no custom-domain DNS change is needed. If a company-owned domain is chosen later, add it in Vercel using the DNS records Vercel supplies and choose one canonical origin.
+3. Set `SITE_URL=https://unitalfa.vercel.app` and `SITE_INDEXABLE=true` in **Production only**, after the production acceptance checks. This host is explicitly allowlisted, alongside the historical company `.in` origins. Arbitrary deployment hosts remain excluded. If the company chooses another domain, intentionally update the allowed host list in `src/lib/site-config.ts` and its tests.
 4. Redeploy. Verify HTTPS, redirects, public pages, contact details, live enquiries, private routes, sitemap and robots on the actual domain.
 5. Submit `/sitemap-index.xml` through the company's search-console account. Confirm preview deployments still have noindex.
 

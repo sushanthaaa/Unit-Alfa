@@ -70,6 +70,8 @@ Each public page has its own title, description, canonical URL and Open Graph me
 
 Review deployments stay non-indexable. `/admin/`, `/track-enquiry/` and API responses remain non-indexable even after production launch. After domain approval, `SITE_URL` and `SITE_INDEXABLE=true` enable the recognised company origin. See [docs/SEO_HANDOVER.md](docs/SEO_HANDOVER.md) for search-console and local-discovery work. Search or AI-answer placement cannot be guaranteed by website code.
 
+The approved launch address is currently `https://unitalfa.vercel.app`; indexing is still disabled pending production acceptance. The configured Supabase/Resend test environment, live results and remaining launch requirements are recorded in [docs/LIVE_SETUP_20261019.md](docs/LIVE_SETUP_20261019.md).
+
 ## Photographs and logo
 
 All currently deployed photographs are real company/profile or Weldtables images. The new supplied purple logo is preserved intact in `assets/brand/`; its deployed WebP has identical decoded pixels and a smaller payload. Purple is used sparingly for brand details alongside graphite, drawing-paper white and amber. No generated component image is used in this revision. Every source and derivative is recorded in [PHOTO_LOG.md](PHOTO_LOG.md). The complete profile PDF is not deployed because it includes customer drawings and internal information that do not need to be public.

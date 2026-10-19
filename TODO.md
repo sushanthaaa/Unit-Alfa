@@ -47,11 +47,17 @@ Revision approved 19 October 2026. Source: company profile, direct company feedb
 - [x] README, VERCEL guide, backend setup, operating instructions and validation record.
 - [x] Prepare reviewable Git changes and local preview.
 
-## Requires company/account setup, not invented content
+## Live setup and production requirements
 
-- [ ] Supabase project, migration, private bucket and staff user.
-- [ ] Resend verified sender domain, API key and monitored recipient.
-- [ ] Vercel environment variables, scheduler and end-to-end live receipt test.
+- [x] Test Supabase project, migration, private bucket and staff user.
+- [x] Preview-only Vercel environment variables and successful deployed enquiry with a real private upload/download.
+- [x] Resend test sending key and monitored test recipient; acknowledgement, staff notification and customer update delivered.
+- [x] Live staff-access revocation and tampered customer-link checks; internal-note separation.
+- [x] Live preview email failure/recovery: saved update, pending notification, restored sender and delivered staff retry.
+- [x] Support the approved `https://unitalfa.vercel.app` origin without enabling indexing.
+- [ ] Resend company-controlled verified sender domain and production recipients.
+- [ ] Five-minute production retry scheduler, authenticated live job and retention verification.
+- [ ] Separate production credentials, staff provisioning, backup/recovery and final production acceptance.
 - [ ] Company approval of preview and production-domain cutover/indexing.
 - [ ] Current certificate document/scope/validity.
 - [ ] Tank facility and inspection-equipment completion status; tank-facility area discrepancy.
@@ -60,5 +66,7 @@ Revision approved 19 October 2026. Source: company profile, direct company feedb
 - [ ] Confirm working hours and factory entrance.
 
 Unconfirmed specifications stay unpublished. Customer enquiry tracking is separate from FLIS; no live FLIS integration is claimed or implemented.
+
+See `docs/LIVE_SETUP_20261019.md` for the exact live results and launch blockers. No merge or indexing change has been performed.
 
 - [ ] Final assistive-technology and OS reduced-motion checks on the deployed preview.
