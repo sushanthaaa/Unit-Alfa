@@ -1,49 +1,47 @@
-# Validation record — 21 September 2026
+# Validation record — 19 October 2026
 
-- Runtime used: Node.js 24.19.0. npm 11.19.1. Astro 7.3.3 with TypeScript 6.
-- Final Astro/TypeScript diagnostics: 28 files, zero errors, zero warnings, zero hints.
-- Static build: nine main pages, 404, four legacy redirects, sitemap and robots generated successfully.
-- Static HTML audit: all nine main routes have unique metadata, one h1, valid internal route/asset references, image dimensions/alt attributes, labelled form fields and parseable JSON-LD.
-- RFQ tests: 3 passed. Manufacturing details survive formatting; missing/malformed/oversized input is rejected; header newlines are removed and URL encoding preserves plain text safely.
-- Emitted client JavaScript syntax: checked with Node.
-- Current JavaScript per page, counting inline and external scripts: Home 5,124 bytes; Enquiry 8,546 bytes (uncompressed). The external RFQ bundle is 4,124 bytes. Earlier bundle-only totals excluded inline scripts.
-- Thirteen deployed WebP images: 406,096 bytes combined. Real source images were not enlarged.
-- Contrast calculations: graphite/orange 4.56:1; muted text/paper 5.38:1; rust/paper 5.34:1; large grey number/paper 3.69:1; footer grey/graphite 8.80:1.
-- Local preview responded HTTP 200 before handoff. Browser opening was queued by the app.
+## Environment and automated checks
 
-## Limits
+Node.js 24.19.0, npm 11.19.1, Astro 7.3.3, TypeScript 6 and the Astro Vercel adapter. Dependencies and the lockfile were updated with npm 11. The Vercel routing utility's transitive path-to-regexp is pinned to its patched 6.3.0 release through an npm override.
 
-No browser screenshots, viewport interaction testing, assistive-technology checks or Lighthouse/field-performance measurement was performed. Responsive layouts, keyboard/focus behaviour and reduced motion are implemented but are not claimed as browser-tested. No supported live WebMCP test context was available; the optional draft tool is unverified in a browser. No email was sent and recipient delivery is not claimed. The actual company domain and DNS have not been altered.
+- `npm test`: **37 tests passed**, including the approved Vercel launch-origin boundary added during setup.
+- PostgreSQL migration tests run against PGlite with stand-in Supabase Auth/Storage tables. They cover atomic request/event/outbox creation, duplicate submission, attachment ownership/completion/MIME/size, upload limits, staff membership, stale updates, public/internal message separation, non-overlapping mail claims, expired final attempts, RLS/grants, reference growth and safe retention claims.
+- API/service tests cover unavailable configuration, origin checks, body limits, anonymous/revoked staff access, signed tracking links, explicit customer response projection, email-provider failure, accepted provider IDs and idempotency headers. Provider HTTP calls are controlled test doubles; no real email or Supabase project is used.
+- Shared validation tests preserve manufacturing notation and annual quantities while rejecting malformed input, header injection, invalid files and duplicate attachment IDs. Deployment-policy tests cover local/review/production origins and indexing boundaries.
+- Astro/TypeScript diagnostics: zero errors, warnings or hints.
+- Vercel build and generated-HTML audit: **19 page routes passed**, with 17 public sitemap entries, 404, robots, metadata, canonical/OG URLs, headings, internal links/anchors, local image assets/dimensions, labels, JSON-LD and legacy redirects.
+- Prettier and `git diff --check`: passed.
+- Full `npm audit`: zero reported vulnerabilities at the time checked. This is not a comprehensive security assessment.
 
-The initial replacement and the original-logo/motion revision were published to the private Sites preview. The GitHub/Vercel handoff below is a later source revision; Vercel publication and company-domain cutover are separate pending steps.
+The final build uses the Vercel adapter and produces static output plus server Functions. A preview-environment build verifies inherited production indexing settings cannot make a review deployment indexable.
 
-## Original logo and motion revision
+## Browser checks performed
 
-- Original logo verified byte-for-byte against the saved existing-site PNG (SHA-256 `d9b4d8d6a410d800ddee111894e2bed7625ed8adfc45c4bbd02bbb57ab860c6c`). Added 224,860 bytes; the same cached file serves header, footer and loader.
-- Astro/TypeScript build: zero errors/warnings/hints. All nine-route static checks pass with the new logo and structured-data reference.
-- Generated home-page inline JavaScript (including independent intro timeout) and emitted JavaScript bundles pass syntax checks.
-- Motion code preserves native scrolling, hides the decorative loader from assistive technology and skips reduced motion. Those behaviours were source-reviewed; browser timing/interaction testing has not been performed.
+The local site was inspected in the Codex in-app browser with 320, 390, 768, 847 and 1440 pixel viewport widths. Representative screenshots were visually inspected. Mobile home-page and tablet capabilities checks found no page-level horizontal overflow.
 
-## GitHub / Vercel preparation
+- New logo and real hero image loaded correctly; responsive logo selection uses the smaller derivative.
+- Mobile menu opens, exposes links and responds to Escape.
+- Product filtering changes visible groups; a real photograph opens in the native dialog, Escape closes it and focus returns to its originating link.
+- The RFQ prefills a selected product, stops on a required missing annual quantity, supports an unknown forecast, adds a second part and retains both requirements and technical notation in the review step.
+- The unconfigured form clearly states its state and keeps submission disabled. No fake receipt or sent-email confirmation is displayed.
+- The capabilities process disclosures expand. The packing-photo control updates selection, caption and image reference.
+- Staff and tracking pages provide the correct unconfigured/no-private-link guidance without exposing records.
 
-- Clean `npm ci` completed with Node.js 24.19.0 and npm 11.19.1 using the committed lockfile.
-- Dependency audit: zero known vulnerabilities at the time of this check (including the new build-only HTML parser).
-- Prettier formatting check passed.
-- Nine Node tests passed: three RFQ tests and six deployment-configuration tests, including preview isolation when production variables are inherited.
-- Astro/TypeScript diagnostics: 31 files, zero errors, warnings or hints.
-- Full static builds and Node output audits passed for both Vercel-preview settings and approved company-domain production settings. These were local build checks, not remote Vercel deployments.
-- Preview output uses the review origin and remains non-indexable even with an inherited production indexing flag. Approved-domain production output uses the company origin and allows indexing only with explicit opt-in.
-- The output audit checks all nine page routes, canonical and Open Graph origins, metadata, indexing, local links/anchors/assets, image dimensions, form labels, JSON-LD, robots, sitemap and redirect fallbacks.
-- Git-tracked content excludes dependencies, build output, local environment files and Vercel project state. A common-secret pattern scan of working files and the existing two-commit history found no matches. This is not a comprehensive security audit.
-- The configured Vercel fields match their current published JSON-schema definitions. The unused experimental function-trigger portions of the upstream schema were excluded because they mix schema draft syntax.
-- Original logo, photography, layout, motion and browser interactions are unchanged in this handoff.
+The CSS and motion code were inspected for reduced-motion overrides, native scrolling, focus visibility, keyboard-triggered reveals and the introduction's independent timeout/dismissal. OS-level reduced-motion emulation, a screen-reader pass, comprehensive cross-browser checks and measured Lighthouse/field Core Web Vitals were not performed. They remain deployment acceptance checks, not claimed passes.
 
-Live Vercel routing, deployment access, browser interaction/accessibility, email receipt and company-domain DNS remain to be verified after import. See VERCEL.md and TODO.md.
+## Asset and content checks
 
-### GitHub verification
+- Original supplied logo retained under `assets/brand/`. Full-size lossless WebP decoded RGBA pixels match the PNG; responsive logo derivatives reduce payload (360 px: 27,540 bytes; 640 px: 60,844 bytes).
+- Profile product/factory/packing photographs are compressed WebP derivatives. No generated component image is referenced or deployed. The complete PDF and internal/customer drawing pages are not public assets.
+- Current facts and withheld specifications are documented in `docs/CONTENT_NOTES.md`; every asset is logged in PHOTO_LOG.md.
+- FLIS and packing are presented as operational following the user's latest confirmation. Website enquiry tracking makes no claim to integrate with FLIS.
 
-The implementation was pushed to `sushanthaaa/Unit-Alfa`, branch `main`, at commit `d73806b1648f36cee3914c885302c40bf78f1fa3`; the remote SHA matched the local revision. [The first GitHub Actions run](https://github.com/sushanthaaa/Unit-Alfa/actions/runs/35606593340) passed on Ubuntu, independently repeating clean installation, formatting, all nine tests and the audited preview build. Later documentation-only commits retain those checks in CI.
+## Subsequent live preview verification
 
-## Contact revision
+After the user supplied signed-in provider sessions, Supabase and Resend were configured for the review branch. The live preview saved a two-part enquiry, uploaded/downloaded a private DXF, delivered staff/customer emails and a status update, and enforced staff revocation and tracking-token validation. A deliberate preview sender failure preserved a pending notification; restoring the sender and using staff retry delivered it. Internal notes stayed out of customer-visible content. See [the detailed setup record](docs/LIVE_SETUP_20261019.md) for scope, limitations and remaining production checks.
 
-The enquiry contact was updated to Jaisurya Govindan, General Manager, +91 94806 16429, gmo@unitalfa.co.in. Formatting, Astro/TypeScript (zero errors/warnings/hints), build and static audits passed. All nine generated pages were checked for the new phone/email links, contact name/role and structured data; the RFQ action and draft recipient use the new email. Previous phone/email values are absent from generated pages. The historical research remains unchanged, and no email or phone call was sent as part of verification.
+A local production-mode build with `SITE_URL=https://unitalfa.vercel.app` and indexing explicitly enabled passed the 19-page audit. This only validates the build policy; it did not change the hosted environment or enable indexing. Preview policy remains independently covered by tests and CI.
+
+The company-controlled email-sending domain, five-minute scheduler, authenticated job/retention test and production credentials/acceptance remain outstanding. The existing `vercel.app` address does not provide DNS ownership for email verification. Indexing remains disabled and the review PR remains unmerged. No DNS cutover or client message was sent.
+
+Historical September checks, earlier GitHub work and the retired mail-draft workflow are archived in `docs/research/VALIDATION_20260921.md`; they do not validate this new backend.

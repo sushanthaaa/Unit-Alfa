@@ -1,6 +1,7 @@
 type SiteEnvironment = Record<string, string | undefined>;
 
-const companyHosts = new Set(['unitalfa.in', 'www.unitalfa.in']);
+// Explicitly approved launch origins; never allow arbitrary Vercel preview hosts.
+const companyHosts = new Set(['unitalfa.in', 'www.unitalfa.in', 'unitalfa.vercel.app']);
 
 /** Resolve build-time URLs without letting preview builds inherit production SEO. */
 export function resolveSiteConfig(env: SiteEnvironment) {

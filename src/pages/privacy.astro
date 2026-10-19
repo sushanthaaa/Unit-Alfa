@@ -5,51 +5,61 @@ import { company } from '../data/company';
 ---
 
 <Layout
-  title="Website Privacy — Unit Alfa"
-  description="How this Unit Alfa website handles enquiry drafts, email, drawing attachments and optional Google Maps and YouTube content."
+  title="Privacy & Drawing Handling | Unit Alfa"
+  description="How Unit Alfa handles enquiry contact details, private drawings, status links, staff access and optional third-party maps and videos."
 >
   <PageIntro
     label="WEBSITE INFORMATION"
-    title="PRIVACY."
-    intro="This notice describes how the website currently works. Updated 21 September 2026."
+    title="PRIVACY & DRAWING HANDLING."
+    intro="Your enquiry information is used to assess the requirement, prepare a response and manage the related sourcing discussion."
   />
   <article class="container legal-copy section-bottom">
-    <h2>Enquiry drafts</h2>
+    <h2>Information you provide</h2>
     <p>
-      The enquiry form prepares a draft in your browser. It does not submit your entries to a Unit
-      Alfa website server, upload files or save the draft in browser storage. Opening your email app
-      transfers the prepared text to that app. Copying or downloading the draft takes place only
-      when you select that action.
+      The RFQ collects business and contact details, part requirements, estimated annual quantities,
+      delivery information and any drawings you choose to upload. Please only share drawings and
+      information you are authorised to provide.
     </p>
-    <h2>Email and drawings</h2>
+    <h2>Storage and access</h2>
     <p>
-      When you send an email, your contact details, message and attachments are handled by your
-      email provider and the recipient’s provider. Share only information needed for the enquiry. If
-      a drawing needs confidentiality arrangements, contact Unit Alfa before sending it. Ask Unit
-      Alfa directly about retention or deletion of emailed enquiries.
+      When the online service is enabled, Supabase stores enquiry records and private drawing files.
+      Files are not published in the product catalogue. Authorised staff access them through the
+      enquiry dashboard; download links expire shortly after creation. Resend processes enquiry
+      notifications and acknowledgements. Vercel hosts the website and its server functions. These
+      providers may process data outside India.
     </p>
-    <h2>Maps, video and external links</h2>
+    <h2>Status links and email</h2>
     <p>
-      The Google map and YouTube player load only when you choose to load them. Those services
-      receive technical information such as your IP address and may use cookies or other storage
-      under their own policies. External links open third-party services with their own terms.
+      Your acknowledgement contains a private enquiry-status link. Anyone you share that link with
+      can see the associated status and public updates. Internal staff notes and uploaded drawings
+      are not exposed by the status page. Emails include the information needed to identify and
+      respond to the enquiry; drawings are accessed through the staff dashboard.
     </p>
-    <h2>Opening animation</h2>
+    <h2>Retention</h2>
     <p>
-      A temporary tab-session flag remembers that the opening logo animation has played, so it does
-      not repeat as you navigate. It contains no enquiry details or personal information. The
-      introduction is skipped when reduced motion is enabled or session storage is unavailable.
+      Incomplete uploads are scheduled for removal after 24 hours. Closed website enquiries and
+      their files are scheduled for removal 12 months after closure. Active enquiries are retained
+      while the discussion continues. Commercial records held separately by Unit Alfa may have
+      different retention requirements. Copies in email inboxes and provider backups follow their
+      respective retention settings.
     </p>
-    <h2>Hosting and analytics</h2>
+    <h2>Website storage and security</h2>
     <p>
-      This website does not include an advertising tracker or an application analytics script. The
-      hosting platform may process access and security logs. A private preview may require the
-      hosting platform’s sign-in; its account and privacy settings apply to that access.
+      The brief opening animation uses a tab-session flag. Staff authentication uses secure
+      HTTP-only cookies. The public RFQ keeps its in-progress data in page memory; it does not save
+      drawings or form contents in browser storage. A hashed network identifier is used briefly to
+      limit abusive requests. The site does not use advertising cookies.
     </p>
-    <h2>Contact</h2>
+    <h2>Maps and video</h2>
     <p>
-      For questions about an enquiry, email <a href={`mailto:${company.email}`}>{company.email}</a>{' '}
-      or contact Unit Alfa at {company.address}.
+      Google Maps and YouTube load only when you select the corresponding controls. Those services
+      then receive connection information and apply their own privacy policies.
+    </p>
+    <h2>Contact and requests</h2>
+    <p>
+      For a correction, deletion request or question about information shared through this website,
+      contact <a href={`mailto:${company.email}`}>{company.email}</a>. Include your enquiry
+      reference where available.
     </p>
   </article>
 </Layout>

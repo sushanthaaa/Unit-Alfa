@@ -25,7 +25,7 @@ const business = {
   '@type': ['Organization', 'LocalBusiness'],
   '@id': new URL('/#organization', origin).href,
   name: company.name,
-  logo: new URL('/images/unit-alfa-logo.png', origin).href,
+  logo: new URL('/images/unit-alfa-logo.webp', origin).href,
   url: origin.href,
   foundingDate: company.founded,
   description:
@@ -115,7 +115,8 @@ const business = {
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#1c2225" />
+    <meta name="theme-color" content="#fffefc" />
+    <meta name="referrer" content="no-referrer" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
@@ -126,7 +127,13 @@ const business = {
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content="UNIT ALFA" />
     <meta property="og:locale" content="en_IN" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:image" content={new URL('/images/profile-battery-box.webp', origin)} />
+    <meta
+      property="og:image:alt"
+      content="An excavator battery enclosure manufactured by Unit Alfa."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <script type="application/ld+json" set:html={JSON.stringify(business)}></script>
     <slot name="head" />
   </head>
@@ -163,7 +170,7 @@ const business = {
               {item.label}
             </a>
           ))}
-          <a class="button button-dark header-quote" href="/enquiry/">
+          <a class="button button-dark header-quote" href="/request-a-quote/">
             Request a quote <Arrow />
           </a>
         </nav>
@@ -187,6 +194,12 @@ const business = {
         <div>
           <h2>Explore</h2>
           <ul>
+            <li>
+              <a href="/enquiry/">Discuss a requirement</a>
+            </li>
+            <li>
+              <a href="/track-enquiry/">Track an enquiry</a>
+            </li>
             {navigation.map((item) => (
               <li>
                 <a href={item.href}>{item.label}</a>
@@ -226,9 +239,11 @@ const business = {
         <span>BUILT AROUND YOUR PART.</span>
       </div>
     </footer>
-    <a class="mobile-enquiry button" href="/enquiry/">
-      Request a quote <Arrow />
-    </a>
+    {!path.startsWith('/request-a-quote/') && (
+      <a class="mobile-enquiry button" href="/request-a-quote/">
+        Request a quote <Arrow />
+      </a>
+    )}
     <script>
       const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
       const nav = document.querySelector<HTMLElement>('#main-nav');

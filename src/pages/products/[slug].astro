@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Arrow from '../../components/Arrow.astro';
+import Lightbox from '../../components/Lightbox.astro';
+import QuoteBand from '../../components/QuoteBand.astro';
+import { products } from '../../data/products';
+export function getStaticPaths() {
+  return products.map((product) => ({ params: { slug: product.id }, props: { product } }));
+}
+const { product: p } = Astro.props;
+const url = new URL(`/products/${p.id}/`, Astro.site).href;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: p.name,
+  description: p.description,
+  url,
+  image: new URL(`/images/${p.image}.webp`, Astro.site).href,
+  manufacturer: { '@id': new URL('/#organization', Astro.site).href },
+};
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Products',
+      item: new URL('/products/', Astro.site).href,
+    },
+    { '@type': 'ListItem', position: 2, name: p.name, item: url },
+  ],
+};
+---
+
+<Layout
+  title={`${p.name} Manufacturer in Bengaluru | Unit Alfa`}
+  description={p.description + ' Manufactured by Unit Alfa in Bommasandra, Bengaluru.'}
+>
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify([schema, breadcrumb])}
+  ></script>
+  <div class="container breadcrumb">
+    <a href="/products/">Products & assemblies</a>
+    <span aria-hidden="true">/</span>
+    <span>{p.name}</span>
+  </div>
+  <section class="container product-detail section-bottom">
+    <figure>
+      <a
+        href={`/images/${p.image}.webp`}
+        data-lightbox
+        data-caption={`${p.name} · ${p.photoPage ? 'Company profile, page ' + p.photoPage : 'Weldtables photograph'}`}
+      >
+        <img
+          src={`/images/${p.image}.webp`}
+          width={p.width}
+          height={p.height}
+          alt={p.alt}
+          fetchpriority="high"
+        />
+      </a>
+      <figcaption>Actual company photograph · select to inspect</figcaption>
+    </figure>
+    <div>
+      <p class="eyebrow">{p.category}</p>
+      <h1>{p.name}</h1>
+      <p class="lead">{p.description}</p>
+      <p>{p.detail}</p>
+      <a class="button button-dark" href={`/request-a-quote/?part=${encodeURIComponent(p.name)}`}>
+        Request a quote <Arrow />
+      </a>
+      {p.id === 'custom-fabrication' && (
+        <a class="text-link" href="https://www.weldtables.in/" target="_blank" rel="noreferrer">
+          Explore Weldtables <Arrow diagonal />
+        </a>
+      )}
+    </div>
+  </section>
+  <section class="specification-section">
+    <div class="container split-section">
+      <div>
+        <p class="eyebrow">FOR A USEFUL TECHNICAL REVIEW</p>
+        <h2>
+          START WITH
+          <br />
+          YOUR DRAWING.
+        </h2>
+        <p>
+          Final specifications are agreed for the individual part. We welcome high variety and low
+          volumes within a recurring supply requirement.
+        </p>
+      </div>
+      <div>
+        <h3>Include with your enquiry</h3>
+        <ul class="requirement-list">
+          {p.requirements.map((r) => (
+            <li>{r}</li>
+          ))}
+        </ul>
+        <p class="eyebrow">RELATED WORK</p>
+        <p>{p.related.join(' · ')}</p>
+      </div>
+    </div>
+  </section>
+  <QuoteBand />
+  <Lightbox />
+</Layout>

@@ -5,6 +5,8 @@ export const company = {
   proprietor: 'Sashidhar K. G.',
   legalName: 'Sashidhar Govindarajulu Kannaiah',
   founded: '1991',
+  coveredArea: '16,600 sq ft',
+  certification: 'ISO 9001:2015',
   contactName: 'Jaisurya Govindan',
   contactRole: 'General Manager',
   phone: '+91 94806 16429',
@@ -22,9 +24,9 @@ export const company = {
 };
 
 export const navigation = [
-  { label: 'About', href: '/about/' },
   { label: 'Capabilities', href: '/capabilities/' },
   { label: 'Products', href: '/products/' },
-  { label: 'Quality', href: '/quality/' },
+  { label: 'How we work', href: '/how-we-work/' },
+  { label: 'About', href: '/about/' },
   { label: 'Contact', href: '/contact/' },
 ];

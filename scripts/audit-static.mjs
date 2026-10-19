@@ -4,22 +4,29 @@ import { existsSync, readFileSync, statSync } from 'node:fs';
 import { resolve, relative } from 'node:path';
 import { loadEnvFile } from 'node:process';
 import { parse } from 'parse5';
+import { products } from '../src/data/products.ts';
 import { resolveSiteConfig } from '../src/lib/site-config.ts';
 
 if (existsSync('.env')) loadEnvFile('.env');
 const { siteUrl, indexable } = resolveSiteConfig(process.env);
-const root = resolve('dist');
+const root = resolve(existsSync('.vercel/output/static') ? '.vercel/output/static' : 'dist');
 const routes = [
   '/',
   '/about/',
   '/capabilities/',
   '/products/',
-  '/quality/',
+  '/how-we-work/',
+  '/request-a-quote/',
+  ...products.map((p) => `/products/${p.id}/`),
+  '/admin/',
+  '/track-enquiry/',
   '/enquiry/',
   '/contact/',
   '/privacy/',
   '/terms/',
 ];
+const privateRoutes = ['/admin/', '/track-enquiry/'];
+const publicRoutes = routes.filter((route) => !privateRoutes.includes(route));
 const errors = [];
 const pages = new Map();
 const titles = new Set();
@@ -111,7 +118,10 @@ for (const route of routes) {
   const noindex = select('meta', 'name', 'robots').some((node) =>
     node.attrs.content.includes('noindex'),
   );
-  check(noindex === !indexable, `${route}: indexing does not match deployment policy`);
+  check(
+    noindex === (!indexable || privateRoutes.includes(route)),
+    `${route}: indexing does not match deployment policy`,
+  );
   const schemas = select('script', 'type', 'application/ld+json');
   check(schemas.length > 0, `${route}: missing JSON-LD`);
   for (const schema of schemas) {
@@ -154,14 +164,20 @@ if (existsSync(resolve(root, 'robots.txt'))) {
 if (existsSync(resolve(root, 'sitemap-0.xml'))) {
   const xml = readFileSync(resolve(root, 'sitemap-0.xml'), 'utf8');
   const locations = [...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
-  check(locations.length === routes.length, 'Sitemap must contain only the nine canonical pages');
-  for (const route of routes)
+  check(
+    locations.length === publicRoutes.length,
+    'Sitemap must contain only public canonical pages',
+  );
+  for (const route of publicRoutes)
     check(locations.includes(`${siteUrl}${route}`), `Sitemap missing ${route}`);
 }
 const config = JSON.parse(readFileSync('vercel.json', 'utf8'));
 for (const { source, destination, permanent } of config.redirects) {
-  const file = localFile(source);
-  check(file && existsSync(file), `Missing static redirect fallback: ${source}`);
+  const fallback = readFileSync('public/_redirects', 'utf8');
+  check(
+    fallback.includes(source) && fallback.includes(destination),
+    `Missing redirect fallback: ${source}`,
+  );
   check(routes.includes(destination) && permanent === true, `Invalid Vercel redirect: ${source}`);
 }
 

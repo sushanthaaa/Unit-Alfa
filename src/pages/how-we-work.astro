@@ -1,0 +1,227 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import QuoteBand from '../components/QuoteBand.astro';
+import Arrow from '../components/Arrow.astro';
+const stages = [
+  [
+    'Review the requirement',
+    'The drawing sets the starting point.',
+    'Part and assembly drawings, revision, material, critical features, annual demand and delivery needs establish the scope for a technical discussion.',
+  ],
+  [
+    'Prepare tooling and routing',
+    'Plan how the part will be made.',
+    'Tools, fixtures and jigs support the required geometry and locating points. The manufacturing route brings together the relevant cutting, forming, machining, welding and finishing operations.',
+  ],
+  [
+    'Plan production',
+    'Match the requirement to the resources.',
+    'Delfoi Planning supports scheduling using the bill of materials, cycle and setup times, resources, required quantities, target dates and working calendars.',
+  ],
+  [
+    'Bring instructions to the floor',
+    'Keep the workstation informed.',
+    'Our in-house Flowline Information System (FLIS) brings relevant drawings, process requirements, quantities and production-order information to the shop floor. FLIS is in regular use and records actual production progress.',
+  ],
+  [
+    'Inspect, pack and dispatch',
+    'Check the part and the shipment.',
+    'Inspection requirements follow the agreed drawing. The packing system is in regular use to support item and quantity checks before dispatch. Packaging requirements form part of the job information.',
+  ],
+];
+---
+
+<Layout
+  title="How We Work — Tooling, Production Planning & FLIS | Unit Alfa"
+  description="How Unit Alfa develops tooling, plans production with Delfoi, records shop-floor progress in FLIS and checks packing for excavator component supply."
+>
+  <PageIntro
+    label="HOW WE WORK"
+    title="FROM YOUR DRAWING TO THE SHOP FLOOR."
+    intro="The component, the plan and the people making it need the same information. Here is how we organise development, production and dispatch."
+  />
+  <section class="container work-sequence section-bottom">
+    <aside class="sequence-index" aria-label="Manufacturing sequence">
+      <p class="eyebrow">FOLLOW THE WORK</p>
+      <ol>
+        {stages.map((s, i) => (
+          <li>
+            <a href={`#work-${i + 1}`}>
+              <span>0{i + 1}</span>
+              {s[0]}
+            </a>
+          </li>
+        ))}
+      </ol>
+      <p class="sequence-note">The route is adapted to the component and agreed supply scope.</p>
+    </aside>
+    <div>
+      {stages.map((s, i) => (
+        <article class="work-stage" id={`work-${i + 1}`} data-work-stage data-reveal>
+          <span class="stage-counter">0{i + 1}</span>
+          <p class="eyebrow">{s[0]}</p>
+          <h2>{s[1]}</h2>
+          <p>{s[2]}</p>
+          {i === 1 && (
+            <img
+              src="/images/weldtable-ribs.webp"
+              width="720"
+              height="720"
+              alt="Locating and assembling structural ribs in a Unit Alfa modular welding table."
+              loading="lazy"
+            />
+          )}
+          {i === 3 && (
+            <div
+              class="flis-diagram"
+              aria-label="FLIS exchanges job information and production progress with the shop floor"
+            >
+              <div>
+                <span class="eyebrow">PRODUCTION PLANNING</span>
+                <strong>Delfoi</strong>
+                <span>Resources · quantities · schedule</span>
+              </div>
+              <span class="flow-direction" aria-hidden="true">
+                ↓
+              </span>
+              <div class="flis-centre">
+                <span class="eyebrow">IN-HOUSE INFORMATION SYSTEM</span>
+                <strong>FLIS</strong>
+                <span>Drawings · process · production order</span>
+              </div>
+              <span class="flow-direction" aria-hidden="true">
+                ↕
+              </span>
+              <div>
+                <span class="eyebrow">SHOP FLOOR</span>
+                <strong>The workstation</strong>
+                <span>Job information & production progress</span>
+              </div>
+              <p class="diagram-caption">
+                Workflow illustration. This is not a live production display.
+              </p>
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="packing-section">
+    <div class="container split-section">
+      <div data-reveal>
+        <p class="eyebrow">PACKING / AN OPERATIONAL SYSTEM</p>
+        <h2>
+          CHECK THE PACK.
+          <br />
+          BEFORE IT LEAVES.
+        </h2>
+        <p>
+          The packing system helps check the item and quantity. The company profile shows the
+          weighing station and its green and red indicators.
+        </p>
+        <p>
+          Select either photograph to inspect the setup. These are documented examples of the
+          system, not a live measurement.
+        </p>
+        <div class="packing-controls" role="group" aria-label="Packing station photographs">
+          <button class="filter-button" data-pack="green" aria-pressed="true">
+            Green indicator
+          </button>
+          <button class="filter-button" data-pack="red" aria-pressed="false">
+            Red indicator
+          </button>
+        </div>
+      </div>
+      <figure>
+        <img
+          id="packing-image"
+          src="/images/profile-packing-check.webp"
+          width="1440"
+          height="908"
+          alt="Unit Alfa packing station with a box, weighing scale and green indicator illuminated."
+          loading="lazy"
+        />
+        <figcaption id="packing-caption" aria-live="polite">
+          Packing station · green indicator · company profile, page 11
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="section container split-section">
+    <div data-reveal>
+      <p class="eyebrow">QUALITY WITHIN THE PROCESS</p>
+      <h2>
+        REQUIREMENTS
+        <br />
+        MADE EXPLICIT.
+      </h2>
+      <p>
+        Material, drawing revision, critical dimensions, weld requirements and finish belong in the
+        technical review. Share any inspection records or documentation needed for your component.
+      </p>
+      <p class="certification-statement">ISO 9001:2015 certified</p>
+      <p>
+        Contact the team for current certificate documentation and the scope relevant to your
+        sourcing review.
+      </p>
+      <a class="text-link" href="/contact/">
+        Discuss quality requirements <Arrow />
+      </a>
+    </div>
+    <div class="systems-note">
+      <p class="eyebrow">SUPPORTING THE WORK</p>
+      <dl class="material-list">
+        <div>
+          <dt>SAP Business One</dt>
+          <dd>Manufacturing and procurement records</dd>
+        </div>
+        <div>
+          <dt>Delfoi Planning</dt>
+          <dd>Production scheduling and resource planning</dd>
+        </div>
+        <div>
+          <dt>FLIS</dt>
+          <dd>Workstation information and production progress</dd>
+        </div>
+        <div>
+          <dt>CAD tools</dt>
+          <dd>ZW CAD and Fusion 360 for technical work</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+  <QuoteBand />
+  <script>
+    const items = document.querySelectorAll<HTMLAnchorElement>('.sequence-index a');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting)
+              items.forEach((link) =>
+                link.setAttribute(
+                  'aria-current',
+                  link.hash === `#${entry.target.id}` ? 'step' : 'false',
+                ),
+              );
+          }
+        },
+        { rootMargin: '-20% 0px -55% 0px' },
+      );
+      document.querySelectorAll('[data-work-stage]').forEach((stage) => observer.observe(stage));
+    }
+    const packButtons = document.querySelectorAll<HTMLButtonElement>('[data-pack]');
+    packButtons.forEach((button) =>
+      button.addEventListener('click', () => {
+        const red = button.dataset.pack === 'red';
+        packButtons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+        const img = document.querySelector<HTMLImageElement>('#packing-image')!;
+        img.src = `/images/profile-packing-check${red ? '-alert' : ''}.webp`;
+        img.alt = `Unit Alfa packing station with a box, weighing scale and ${red ? 'red' : 'green'} indicator illuminated.`;
+        document.querySelector('#packing-caption')!.textContent =
+          `Packing station · ${red ? 'red' : 'green'} indicator · company profile, page ${red ? '14' : '11'}`;
+      }),
+    );
+  </script>
+</Layout>

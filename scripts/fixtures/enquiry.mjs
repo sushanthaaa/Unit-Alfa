@@ -1,0 +1,25 @@
+export const validEnquiry = {
+  submissionKey: 'a6d3e455-232d-4bcf-a2c2-0bcff6ad1220',
+  company: 'Example Engineering',
+  contactName: 'Test Buyer',
+  email: 'buyer@example.com',
+  phone: '+91 90000 00000',
+  industry: 'Hydraulic excavators / off-highway',
+  deliveryLocation: 'Bengaluru',
+  startDate: 'Q1 2027',
+  frequency: 'Monthly releases',
+  parts: [
+    {
+      name: 'Battery box',
+      revision: 'B',
+      annualQuantity: 240,
+      material: 'MS to drawing',
+      thickness: '3 mm',
+      finish: 'To drawing',
+    },
+  ],
+  notes: 'Critical fit: Ø12 ±0.1 mm.\nPlease review the drawing.',
+  attachments: [],
+  consent: true,
+  website: '',
+};
