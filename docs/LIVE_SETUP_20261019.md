@@ -35,7 +35,7 @@ The direct signed-out drawing navigation was blocked by the browser client, so t
 ## Launch requirements still open
 
 1. **Verify an email-sending domain.** `unitalfa.vercel.app` hosts the website but does not grant DNS control of `vercel.app`. Gmail is a recipient, not a domain the user can verify in Resend. Obtain the company's DNS access for a domain it controls, or arrange an approved domain. Preserve existing mailbox records. Resend currently has no verified domain; its test sender can only send to the account owner's email.
-2. **Configure the production retry schedule.** The committed daily cron is for review compatibility. The intended five-minute schedule needs a suitable hosting plan or approved external scheduler. Preview cron does not run. Authenticated scheduled execution and real-service retention cleanup remain unverified.
+2. **Choose suitable commercial hosting and configure retries.** Vercel documents Hobby as personal, non-commercial use only; this company launch therefore needs a suitable plan such as Pro, or another approved commercial hosting arrangement. An external scheduler alone does not change Hobby's use restriction. The committed daily cron is for review compatibility; production needs the intended five-minute schedule. Preview cron does not run. Authenticated scheduled execution and real-service retention cleanup remain unverified. No paid upgrade was performed.
 3. **Provision production separately.** Use company-controlled credentials, a verified sender, the company recipient `gmo@unitalfa.co.in`, authorised company staff and appropriate backup/recovery arrangements. Keep synthetic test records out of production.
 4. **Repeat acceptance on production before launch.** Verify real-recipient mail, private uploads/downloads, staff controls, retries and the scheduler, then merge/promote as agreed. Complete accessibility/cross-browser acceptance listed in `VALIDATION.md`.
 5. **Enable indexing last.** The approved website address is `https://unitalfa.vercel.app`. It is now explicitly supported by the indexing policy, but requires production mode and `SITE_INDEXABLE=true`. Preview and private routes remain noindex. No indexing switch was enabled during setup.
@@ -47,4 +47,5 @@ The review PR remains unmerged while these production requirements are unresolve
 - [Resend test-sender restriction](https://resend.com/docs/knowledge-base/403-error-resend-dev-domain)
 - [Resend domain verification](https://resend.com/docs/dashboard/domains/introduction)
 - [Vercel cron limits](https://vercel.com/docs/cron-jobs/usage-and-pricing)
+- [Vercel Hobby plan use restriction](https://vercel.com/docs/plans/hobby)
 - [Supabase API key types](https://supabase.com/docs/guides/getting-started/api-keys)

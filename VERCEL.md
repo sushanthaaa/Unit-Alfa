@@ -16,7 +16,7 @@ Complete [docs/BACKEND_SETUP.md](docs/BACKEND_SETUP.md): Supabase migration and 
 
 For production with Vercel Pro/Enterprise, change the existing cron schedule in `vercel.json` to `*/5 * * * *`. Its path is `/api/jobs/notifications/`. Set `CRON_SECRET` to a separate random value of at least 32 characters; Vercel passes it as the Bearer authorization header. Cron jobs run against the production deployment, so a branch preview needs manual invocation or a separately configured test scheduler.
 
-Vercel Hobby currently allows only daily cron jobs and rejects more frequent schedules. If using a different permitted hosting/scheduling arrangement, invoke the same endpoint every five minutes with the secret Bearer header. Remove the Vercel cron entry if an external scheduler becomes authoritative. Check the chosen plan's suitability for a company website. Do not enable live submissions with only the review schedule and assume prompt automatic retries.
+Vercel Hobby currently allows only daily cron jobs and rejects more frequent schedules. It is also restricted to personal, non-commercial use; the company launch needs a suitable commercial plan such as Pro or another approved hosting arrangement. An external scheduler does not resolve that use restriction. If using a different permitted hosting/scheduling arrangement, invoke the same endpoint every five minutes with the secret Bearer header. Remove the Vercel cron entry if an external scheduler becomes authoritative. Do not enable live submissions with only the review schedule and assume prompt automatic retries.
 
 Functions have a configured maximum duration of 120 seconds. Files bypass Vercel's request-body limit through private direct uploads; the API accepts only small JSON metadata. Static marketing pages do not invoke a Function per visit.
 
@@ -65,6 +65,7 @@ A Vercel preview is still required to verify routing, server cookies, platform h
 
 - [Astro Vercel integration](https://docs.astro.build/en/guides/integrations-guide/vercel/)
 - [Vercel cron limits and pricing](https://vercel.com/docs/cron-jobs/usage-and-pricing)
+- [Vercel Hobby plan and use restriction](https://vercel.com/docs/plans/hobby)
 - [Vercel cron management and security](https://vercel.com/docs/cron-jobs/manage-cron-jobs)
 - [Vercel Function limits](https://vercel.com/docs/functions/limitations)
 - [Vercel request headers](https://vercel.com/docs/headers/request-headers)

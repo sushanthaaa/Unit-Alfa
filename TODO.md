@@ -56,6 +56,7 @@ Revision approved 19 October 2026. Source: company profile, direct company feedb
 - [x] Live preview email failure/recovery: saved update, pending notification, restored sender and delivered staff retry.
 - [x] Support the approved `https://unitalfa.vercel.app` origin without enabling indexing.
 - [ ] Resend company-controlled verified sender domain and production recipients.
+- [ ] Suitable commercial hosting plan; Vercel Hobby is restricted to personal, non-commercial use.
 - [ ] Five-minute production retry scheduler, authenticated live job and retention verification.
 - [ ] Separate production credentials, staff provisioning, backup/recovery and final production acceptance.
 - [ ] Company approval of preview and production-domain cutover/indexing.
